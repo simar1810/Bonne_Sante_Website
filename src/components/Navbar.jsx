@@ -17,42 +17,42 @@ const Navbar = () => {
     <div className='flex justify-end items-center gap-34 md:gap-48'>
       <ul className='hidden md:flex items-center justify-between gap-12 list-none'>
         <li 
-          className='text-lg text-[#FFFFFF80] hover:text-white cursor-pointer font-semibold'
+          className='text-lg text-[#07363C] hover:text-white cursor-pointer font-semibold'
           onClick={() => scrollToSection("home")}
         >
           Home
         </li>
 
         <li 
-          className='text-lg text-[#FFFFFF80] hover:text-white cursor-pointer font-semibold'
+          className='text-lg text-[#07363C] hover:text-white cursor-pointer font-semibold'
           onClick={() => scrollToSection("about")}
         >
           About Us
         </li>
 
         <li 
-          className='text-lg text-[#FFFFFF80] hover:text-white cursor-pointer font-semibold'
+          className='text-lg text-[#07363C] hover:text-white cursor-pointer font-semibold'
           onClick={() => scrollToSection("contact")}
         >
           Contact Us
         </li>
 
         <li 
-          className='text-lg text-[#FFFFFF80] hover:text-white cursor-pointer font-semibold'
+          className='text-lg text-[#07363C] hover:text-white cursor-pointer font-semibold'
           onClick={() => scrollToSection("blogs")}
         >
           Blogs
         </li>
 
         <li 
-          className='text-lg text-[#FFFFFF80] hover:text-white cursor-pointer font-semibold'
+          className='text-lg text-[#07363C] hover:text-white cursor-pointer font-semibold'
           onClick={() => scrollToSection("services")}
         >
           Services
         </li>
 
         <li 
-          className='text-lg text-[#FFFFFF80] hover:text-white cursor-pointer font-semibold'
+          className='text-lg text-[#07363C] hover:text-white cursor-pointer font-semibold'
           onClick={() => scrollToSection("people")}
         >
           People

@@ -28,7 +28,7 @@ const Footer = () => {
           <button 
             className='text-sm font-semibold bg-[#07363C] text-white 
             py-3 px-4 rounded-full 
-            absolute right-2 top-1/2 -translate-y-1/2 md:right-0'
+            absolute right-2 top-1/2 -translate-y-1/2 md:right-0 hover:scale-105 hover:shadow-lg transition-all duration-20'
           >
             Subscribe
           </button>
