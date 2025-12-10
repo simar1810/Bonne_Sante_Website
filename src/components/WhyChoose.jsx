@@ -1,17 +1,37 @@
+"use client";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 import Image from "next/image";
+
+function FadeSlide({ children, from }) {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: false, amount: 0.3 });
+
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: from === "up" ? -40 : 40 }}
+      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: from === "up" ? -40 : 40 }}
+      transition={{ duration: 0.7, ease: "easeOut" }}
+    >
+      {children}
+    </motion.div>
+  );
+}
 
 export default function WhyChooseUs() {
   return (
     <section id="blogs" className="w-full flex justify-center py-18 px-4">
       <div
-        className="w-full max-w-[1400px] bg-[#0E3D3F] rounded-3xl p-10 relative text-white shadow-lg 
-        border border-white/10 bg-cover bg-center"
+        className={`w-full max-w-[1400px] bg-[#0E3D3F] rounded-3xl p-10 relative text-white shadow-lg 
+        border border-white/10 bg-cover bg-center`}
         style={{ backgroundImage: "url('/chooseUsbg.png')" }}
       >
         <h2 className="text-center text-3xl md:text-4xl font-kaushan italic mb-10">
           Why Choose us?
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-4 w-full">
+          <FadeSlide from="down">
           <div className="col-span-1 flex flex-col items-center md:items-start">
             <div className="overflow-hidden rounded-2xl w-full md:w-[28vw] h-52 sm:h-64 md:h-68">
               <Image
@@ -31,7 +51,9 @@ export default function WhyChooseUs() {
                 Certified dietitians and health coaches dedicated to your success.
               </p>
             </div>
-          </div>
+            </div>
+          </FadeSlide>
+          <FadeSlide from="up">
           <div className="col-span-1 flex flex-col gap-3 items-center md:items-start">
             <div className="bg-linear-to-r from-[#558D94] to-[#07363C] rounded-2xl px-5 py-3 backdrop-blur border-2 border-[#999999] w-full md:w-auto">
               <h3 className="text-xl font-kaushan mb-2 text-center md:text-left">
@@ -51,7 +73,9 @@ export default function WhyChooseUs() {
                 className="h-full w-full object-cover md:w-[28vw]"
               />
             </div>
-          </div>
+            </div>
+          </FadeSlide>
+          <FadeSlide from="down">
           <div className="col-span-1 flex flex-col items-center md:items-start">
             <div className="overflow-hidden rounded-2xl w-full md:w-[28vw] h-52 sm:h-64 md:h-68">
               <Image
@@ -72,7 +96,7 @@ export default function WhyChooseUs() {
               </p>
             </div>
           </div>
-
+          </FadeSlide>
         </div>
       </div>
     </section>

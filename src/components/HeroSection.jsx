@@ -8,14 +8,14 @@ const HeroSection = () => {
     <section id="home" className="relative h-[92vh] overflow-hidden mt-4 md:mt-6 mb-4 md:mb-10 mx-4 md:mx-8 rounded-4xl md:rounded-none">
 
       <Image
-        src="/homebg.png"
+        src="/homebg2.png"
         alt="Hero Background"
         fill
         className="w-[60vw] hidden md:block md:object-center"
         priority
       />
       <Image
-        src="/homebg.png"
+        src="/homebg2.png"
         alt="Hero Background"
         fill
         className="w-[60vw] md:hidden object-cover"
@@ -28,7 +28,7 @@ const HeroSection = () => {
 
       <div className="absolute bottom-0 right-0 rounded-4xl xl:rounded-5xl 2xl:rounded-4xl sm:block hidden">
         <Image
-          src="/home-yoga.png"
+          src="/home-yoga2.png"
           alt="logo"
           width={500}
           height={500}
