@@ -3,6 +3,7 @@
 import Image from "next/image";
 import React, { useEffect, useState, useRef } from "react";
 import { motion, useInView } from "framer-motion";
+import ContactUsForm from "@/forms/ContactUs";
 
 const ContactUs = () => {
   const text = "Take the First Step Today!";
@@ -56,7 +57,7 @@ const ContactUs = () => {
         </p>
 
         <div className="flex gap-3 justify-center md:justify-start">
-          <ContactUs/>
+          <ContactUsForm />
           <button className="text-[#07363C] rounded-full px-4 py-3 bg-white font-bold transition-all duration-200 hover:scale-105 hover:shadow-lg">
             Book Now
           </button>

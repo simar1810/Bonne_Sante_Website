@@ -1,7 +1,14 @@
 "use client";
 import Image from "next/image";
 import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState } from "react";
+import MealPlanForm from "@/forms/MealPlanForms";
+import NutritionalCounselingForm from "@/forms/NutritionalCounselingForm";
+import BehavioralCoachingForm from "@/forms/BehavioralCoachingForm";
+import WeightManagementForm from "@/forms/WeightManagementForm";
+import SportsNutritionForm from "@/forms/SportsNutritionForm";
+import MedicalNutritionForm from "@/forms/MedicalNutritionForm";
+import FamilyWellnessForm from "@/forms/FamilyWellnessForm";
 
 const services = [
   {
@@ -58,6 +65,24 @@ const services = [
 function ServiceCard({ item, i }) {
   const ref = useRef(null);
   const isInView = useInView(ref, { amount: 0.2, once: false });
+  const [openMeal, setOpenMeal] = useState(false);
+  const [openNutrition, setOpenNutrition] = useState(false);
+  const [openBehavioral, setOpenBehavioral] = useState(false);
+  const [openWeight, setOpenWeight] = useState(false);
+  const [openSports, setOpenSports] = useState(false);
+  const [openMedical, setOpenMedical] = useState(false);
+  const [openFamily, setOpenFamily] = useState(false);
+
+
+  const onTagClick = () => {
+    if (item.title === "Personalized Meal Plans") setOpenMeal(true);
+    if (item.title === "Nutritional Counseling") setOpenNutrition(true);
+    if (item.title === "Behavioral and Lifestyle Coaching") setOpenBehavioral(true);
+    if (item.title === "Weight Management") setOpenWeight(true);
+    if (item.title === "Sports Nutrition Programs") setOpenSports(true);
+    if (item.title === "Medical Nutrition Programs") setOpenMedical(true);
+    if (item.title === "Family Wellness") setOpenFamily(true);
+  };
 
   return (
     <motion.div
@@ -81,6 +106,7 @@ function ServiceCard({ item, i }) {
 
       {item.tag && (
         <div
+          onClick={onTagClick}
           className={`
             absolute 
             top-1 md:top-2 lg:top-1 xl:top-2 2xl:top-3 
@@ -94,6 +120,27 @@ function ServiceCard({ item, i }) {
         >
           {item.tag}
         </div>
+      )}
+        {item.title === "Personalized Meal Plans" && (
+          <MealPlanForm open={openMeal} setOpen={setOpenMeal} />
+      )}
+      {item.title === "Nutritional Counseling" && (
+        <NutritionalCounselingForm open={openNutrition} setOpen={setOpenNutrition} />
+      )}
+      {item.title === "Behavioral and Lifestyle Coaching" && (
+        <BehavioralCoachingForm open={openBehavioral} setOpen={setOpenBehavioral} />
+      )}
+      {item.title === "Weight Management" && (
+        <WeightManagementForm open={openWeight} setOpen={setOpenWeight} />
+      )}
+      {item.title === "Sports Nutrition Programs" && (
+        <SportsNutritionForm open={openSports} setOpen={setOpenSports} />
+      )}
+      {item.title === "Medical Nutrition Programs" && (
+        <MedicalNutritionForm open={openMedical} setOpen={setOpenMedical} />
+      )}
+      {item.title === "Family Wellness" && (
+        <FamilyWellnessForm open={openFamily} setOpen={setOpenFamily} />
       )}
 
       <div className="absolute bottom-14 left-8 w-[80%] md:max-w-[87%] 2xl:w-[90%] text-white">
