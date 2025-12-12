@@ -1,6 +1,7 @@
 "use client";
+import { createOrder, openRazorpay, registerUser } from "@/utils/payment";
 import { X, CheckCircle } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import toast from "react-hot-toast";
 
 export default function BehavioralCoachingForm({ open, setOpen }) {
@@ -15,14 +16,13 @@ export default function BehavioralCoachingForm({ open, setOpen }) {
     coachingPackage: "",
     sessionLength: "",
     schedule: "",
-    paymentCard: "",
-    captcha: "",
     agree: false,
   });
 
   const [loading, setLoading] = useState(false);
   const [successOpen, setSuccessOpen] = useState(false);
   const [errors, setErrors] = useState({});
+  const [scriptLoaded, setScriptLoaded] = useState(false);
 
   const handleChange = (key, value) =>
     setFormData((prev) => ({ ...prev, [key]: value }));
@@ -46,28 +46,40 @@ export default function BehavioralCoachingForm({ open, setOpen }) {
     if (!formData.coachingGoals.length) e.coachingGoals = "Choose at least one goal";
     if (!formData.coachingPackage) e.coachingPackage = "Select coaching package";
     if (!formData.sessionLength) e.sessionLength = "Select session length";
-    if (!formData.paymentCard.trim()) e.paymentCard = "Enter card number";
-    else if (!/^\d{12,16}$/.test(formData.paymentCard))
-      e.paymentCard = "Enter valid card number (12-16 digits)";
-    if (!formData.captcha.trim()) e.captcha = "Enter captcha";
     if (!formData.agree) e.agree = "You must accept the agreement";
 
     setErrors(e);
     return Object.keys(e).length === 0;
   };
-
-  const handleSubmit = (ev) => {
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src = "https://checkout.razorpay.com/v1/checkout.js";
+    script.async = true;
+    script.onload = () => setScriptLoaded(true);
+    document.body.appendChild(script);
+  }, []);
+  const handleSubmit = async(ev) => {
     ev.preventDefault();
+    if (!scriptLoaded) return toast.error("Payment gateway still loading, please wait a second");
     if (!validate()) {
       const first = Object.values(errors)[0] || "Please fix the errors";
       toast.error(first);
       return;
     }
     setLoading(true);
-    setTimeout(() => {
+    try {
+      let amount = 499;
+      await registerUser({ name: formData.name, email:formData.email, phoneNumber:formData.phone, reason:"Behavioural Coaching" });
+      const order = await createOrder({amount});
+      await openRazorpay({ order, name: formData.name, email:formData.email, phoneNumber:formData.phone, amount });
+    } catch (err) {
+      console.error(err);
+      toast.error("Error initiating payment. Please try again.");
       setLoading(false);
-      setSuccessOpen(true);
-      toast.success("Coaching request submitted");
+      return;
+    } finally {
+      setLoading(false);
+    }
 
       setFormData({
         name: "",
@@ -80,13 +92,9 @@ export default function BehavioralCoachingForm({ open, setOpen }) {
         coachingPackage: "",
         sessionLength: "",
         schedule: "",
-        paymentCard: "",
-        captcha: "",
         agree: false,
       });
       setOpen(false);
-      setTimeout(() => setSuccessOpen(false), 2200);
-    }, 1400);
   };
 
   if (!open) return null;
@@ -230,22 +238,6 @@ export default function BehavioralCoachingForm({ open, setOpen }) {
                 label="Schedule"
                 value={formData.schedule}
                 onChange={(v) => handleChange("schedule", v)}
-              />
-            </FieldWrapper>
-
-            <FieldWrapper error={errors.paymentCard}>
-              <FloatingInput
-                label="Payment — Credit Card Number"
-                value={formData.paymentCard}
-                onChange={(v) => handleChange("paymentCard", v)}
-              />
-            </FieldWrapper>
-
-            <FieldWrapper error={errors.captcha}>
-              <FloatingInput
-                label="Captcha"
-                value={formData.captcha}
-                onChange={(v) => handleChange("captcha", v)}
               />
             </FieldWrapper>
 

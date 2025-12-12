@@ -1,5 +1,6 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { createOrder, openRazorpay, registerUser } from "@/utils/payment";
 import { X, CheckCircle } from "lucide-react";
 import toast from "react-hot-toast";
 
@@ -18,7 +19,6 @@ export default function FamilyWellnessForm({ open, setOpen }) {
     stressManagement: [], 
     programDuration: "",
     supportFormat: "", 
-    payment: "",
     terms: false,
   };
 
@@ -26,7 +26,7 @@ export default function FamilyWellnessForm({ open, setOpen }) {
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
   const [successOpen, setSuccessOpen] = useState(false);
-
+  const [scriptLoaded, setScriptLoaded] = useState(false);
   
   const ageGroupOptions = ["Kids", "Teens", "Adults", "Seniors"];
   const healthGoalOptions = [
@@ -76,15 +76,18 @@ export default function FamilyWellnessForm({ open, setOpen }) {
       e.stressManagement = "Select at least one stress management practice.";
     if (!formData.programDuration) e.programDuration = "Choose preferred program duration.";
     if (!formData.supportFormat) e.supportFormat = "Choose support format.";
-    if (!formData.payment.trim()) e.payment = "Credit card number is required.";
-    else if (!/^\d{12,16}$/.test(formData.payment.replace(/\s+/g, "")))
-      e.payment = "Enter a valid card number (12–16 digits).";
     if (!formData.terms) e.terms = "You must accept terms and conditions.";
 
     setErrors(e);
     return Object.keys(e).length === 0;
   };
-
+    useEffect(() => {
+    const script = document.createElement("script");
+    script.src = "https://checkout.razorpay.com/v1/checkout.js";
+    script.async = true;
+    script.onload = () => setScriptLoaded(true);
+    document.body.appendChild(script);
+  }, []);
   
   const handleClose = () => {
     setFormData(initialData);
@@ -94,7 +97,7 @@ export default function FamilyWellnessForm({ open, setOpen }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    if (!scriptLoaded) return toast.error("Payment gateway still loading, please wait a second");
     if (!validate()) {
       
       const first = Object.values(errors)[0] || "Please fix errors.";
@@ -104,21 +107,19 @@ export default function FamilyWellnessForm({ open, setOpen }) {
 
     setLoading(true);
     try {
-      
-      await new Promise((res) => setTimeout(res, 1400));
-
-      
-      setLoading(false);
-      setFormData(initialData);
-      setErrors({});
-      setOpen(false);
-      setSuccessOpen(true);
-      toast.success("Form submitted");
-
+      let amount = 499;
+      await registerUser({ name: formData.name, email:formData.email, phoneNumber:formData.phone, reason:"Family Awareness" });
+      const order = await createOrder({amount});
+      await openRazorpay({ order, name: formData.name, email:formData.email, phoneNumber:formData.phone, amount });
     } catch (err) {
+      console.error(err);
+      toast.error("Error initiating payment. Please try again.");
       setLoading(false);
-      toast.error("Submission failed. Try again.");
+      return;
+    } finally {
+      setLoading(false);
     }
+    setOpen(false);
   };
 
   if (!open) return null;
@@ -365,21 +366,6 @@ export default function FamilyWellnessForm({ open, setOpen }) {
                 <option value="Hybrid">Hybrid</option>
               </select>
               {errors.supportFormat && <p className="text-xs text-red-500 mt-1">{errors.supportFormat}</p>}
-            </div>
-
-            {/* Payment */}
-            <div>
-              <label className="text-sm font-medium text-gray-700">Credit Card Number*</label>
-              <input
-                className={`mt-2 w-full px-4 py-3 border rounded-lg text-sm outline-none focus:ring-2 focus:ring-[#0C3C3E] ${
-                  errors.payment ? "border-red-400" : "border-gray-300"
-                }`}
-                value={formData.payment}
-                onChange={(e) => updateField("payment", e.target.value)}
-                inputMode="numeric"
-                aria-invalid={!!errors.payment}
-              />
-              {errors.payment && <p className="text-xs text-red-500 mt-1">{errors.payment}</p>}
             </div>
 
             {/* Terms */}

@@ -1,6 +1,7 @@
 "use client";
 import { X, CheckCircle } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { createOrder, openRazorpay, registerUser } from "@/utils/payment";
 import toast from "react-hot-toast";
 
 export default function WeightManagementForm({ open, setOpen }) {
@@ -19,14 +20,13 @@ export default function WeightManagementForm({ open, setOpen }) {
     programDuration: "",
     coachingFormat: "",
     schedule: "",
-    paymentCard: "",
     terms: false,
   });
 
   const [loading, setLoading] = useState(false);
   const [successOpen, setSuccessOpen] = useState(false);
   const [errors, setErrors] = useState({});
-
+  const [scriptLoaded, setScriptLoaded] = useState(false);
   const handleChange = (key, value) =>
     setFormData((prev) => ({ ...prev, [key]: value }));
 
@@ -53,17 +53,20 @@ export default function WeightManagementForm({ open, setOpen }) {
     if (!formData.focusArea) e.focusArea = "Select a focus area";
     if (!formData.programDuration) e.programDuration = "Select program duration";
     if (!formData.coachingFormat) e.coachingFormat = "Select coaching format";
-    if (!formData.paymentCard) e.paymentCard = "Enter card number";
-    else if (!/^\d{12,16}$/.test(formData.paymentCard))
-      e.paymentCard = "Enter valid card number (12-16 digits)";
-    if (!formData.terms) e.terms = "You must accept terms and conditions";
 
     setErrors(e);
     return Object.keys(e).length === 0;
   };
-
-  const handleSubmit = (ev) => {
+useEffect(() => {
+    const script = document.createElement("script");
+    script.src = "https://checkout.razorpay.com/v1/checkout.js";
+    script.async = true;
+    script.onload = () => setScriptLoaded(true);
+    document.body.appendChild(script);
+  }, []);
+  const handleSubmit = async(ev) => {
     ev.preventDefault();
+    if (!scriptLoaded) return toast.error("Payment gateway still loading, please wait a second");
     if (!validate()) {
       const first = Object.values(errors)[0] || "Please fix errors";
       toast.error(first);
@@ -71,11 +74,19 @@ export default function WeightManagementForm({ open, setOpen }) {
     }
 
     setLoading(true);
-    setTimeout(() => {
+    try {
+      let amount = 499;
+      await registerUser({ name: formData.name, email:formData.email, phoneNumber:formData.phone, reason:"Weight Management" });
+      const order = await createOrder({amount});
+      await openRazorpay({ order, name: formData.name, email:formData.email, phoneNumber:formData.phone, amount });
+    } catch (err) {
+      console.error(err);
+      toast.error("Error initiating payment. Please try again.");
       setLoading(false);
-      setSuccessOpen(true);
-      toast.success("Weight management request submitted");
-
+      return;
+    } finally {
+      setLoading(false);
+    }
       setFormData({
         name: "",
         email: "",
@@ -91,12 +102,9 @@ export default function WeightManagementForm({ open, setOpen }) {
         programDuration: "",
         coachingFormat: "",
         schedule: "",
-        paymentCard: "",
         terms: false,
       });
       setOpen(false);
-      setTimeout(() => setSuccessOpen(false), 2200);
-    }, 1400);
   };
 
   if (!open) return null;
@@ -284,15 +292,6 @@ export default function WeightManagementForm({ open, setOpen }) {
                 label="Schedule"
                 value={formData.schedule}
                 onChange={(v) => handleChange("schedule", v)}
-              />
-            </FieldWrapper>
-
-            {/* Payment */}
-            <FieldWrapper error={errors.paymentCard}>
-              <FloatingInput
-                label="Payment — Credit Card Number"
-                value={formData.paymentCard}
-                onChange={(v) => handleChange("paymentCard", v)}
               />
             </FieldWrapper>
 

@@ -11,10 +11,8 @@ export default function AboutSection() {
     offset: ["0.1 1", "0.9 0"],
   });
 
-  // Faster and smoother motion using spring
   const smoothConfig = { stiffness: 120, damping: 20, mass: 0.2 };
 
-  // Left image — inwards fade on scroll up/out
   const leftXRaw = useTransform(scrollYProgress, [0, 1], ["-60px", "0px"]);
   const leftOpacityRaw = useTransform(
     scrollYProgress,
@@ -25,7 +23,6 @@ export default function AboutSection() {
   const leftX = useSpring(leftXRaw, smoothConfig);
   const leftOpacity = useSpring(leftOpacityRaw, smoothConfig);
 
-  // Right image — inwards fade on scroll up/out
   const rightXRaw = useTransform(scrollYProgress, [0, 1], ["40px", "0px"]);
   const rightOpacityRaw = useTransform(
     scrollYProgress,
