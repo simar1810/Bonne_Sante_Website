@@ -1,6 +1,7 @@
 "use client";
 import { X, CheckCircle } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { createOrder, openRazorpay, registerUser } from "@/utils/payment";
 import toast from "react-hot-toast";
 
 export default function NutritionalCounselingForm({ open, setOpen }) {
@@ -8,21 +9,19 @@ export default function NutritionalCounselingForm({ open, setOpen }) {
     name: "",
     email: "",
     phone: "",
-    contactMethod: "", // radio
-    healthGoals: [], // checkbox
+    contactMethod: "",
+    healthGoals: [],
     healthConcerns: "",
-    dietaryPrefs: [], // checkbox
-    sessionLength: [], // checkbox (Field 50)
-    consultationType: "", // radio (Field 51)
-    paymentCard: "",
-    captcha: "",
+    dietaryPrefs: [], 
+    sessionLength: [], 
+    consultationType: "", 
     agree: false,
   });
 
   const [loading, setLoading] = useState(false);
   const [successOpen, setSuccessOpen] = useState(false);
   const [errors, setErrors] = useState({});
-
+   const [scriptLoaded, setScriptLoaded] = useState(false);
   const handleChange = (key, value) =>
     setFormData((prev) => ({ ...prev, [key]: value }));
 
@@ -55,21 +54,22 @@ export default function NutritionalCounselingForm({ open, setOpen }) {
     if (!formData.sessionLength.length)
       e.sessionLength = "Choose preferred session length";
 
-    if (!formData.paymentCard.trim()) e.paymentCard = "Enter card number";
-    else if (!/^\d{12,16}$/.test(formData.paymentCard))
-      e.paymentCard = "Enter valid card number (12-16 digits)";
-
-    if (!formData.captcha.trim()) e.captcha = "Enter captcha";
 
     if (!formData.agree) e.agree = "You must accept the agreement";
 
     setErrors(e);
     return Object.keys(e).length === 0;
   };
-
-  const handleSubmit = (ev) => {
+   useEffect(() => {
+    const script = document.createElement("script");
+    script.src = "https://checkout.razorpay.com/v1/checkout.js";
+    script.async = true;
+    script.onload = () => setScriptLoaded(true);
+    document.body.appendChild(script);
+  }, []);
+  const handleSubmit = async(ev) => {
     ev.preventDefault();
-
+     if (!scriptLoaded) return toast.error("Payment gateway still loading, please wait a second");
     if (!validate()) {
       const first = Object.values(errors)[0] || "Please fix the errors";
       toast.error(first);
@@ -78,11 +78,19 @@ export default function NutritionalCounselingForm({ open, setOpen }) {
 
     setLoading(true);
 
-    setTimeout(() => {
+    try {
+      let amount = 499;
+      await registerUser({ name: formData.name, email:formData.email, phoneNumber:formData.phone, reason:"Nutrition Counselling Programme" });
+      const order = await createOrder({amount});
+      await openRazorpay({ order, name: formData.name, email:formData.email, phoneNumber:formData.phone, amount });
+    } catch (err) {
+      console.error(err);
+      toast.error("Error initiating payment. Please try again.");
       setLoading(false);
-      setSuccessOpen(true);
-      toast.success("Nutritional counseling request submitted");
-
+      return;
+    } finally {
+      setLoading(false);
+    }
       setFormData({
         name: "",
         email: "",
@@ -93,15 +101,9 @@ export default function NutritionalCounselingForm({ open, setOpen }) {
         dietaryPrefs: [],
         sessionLength: [],
         consultationType: "",
-        paymentCard: "",
-        captcha: "",
         agree: false,
       });
-
-      setOpen(false);
-
-      setTimeout(() => setSuccessOpen(false), 2200);
-    }, 1400);
+        setOpen(false);
   };
 
   if (!open) return null;
@@ -212,7 +214,6 @@ export default function NutritionalCounselingForm({ open, setOpen }) {
               />
             </FieldWrapper>
 
-            {/* Dietary Preferences/Restrictions */}
             <FieldWrapper label="Dietary Preferences / Restrictions">
               <div className="flex flex-wrap gap-2">
                 {["Vegetarian", "Vegan", "Gluten-free", "Dairy-free", "Halal", "None"].map(
@@ -234,7 +235,6 @@ export default function NutritionalCounselingForm({ open, setOpen }) {
               </div>
             </FieldWrapper>
 
-            {/* Preferred Session Length (checkbox group Field 50) */}
             <FieldWrapper error={errors.sessionLength} label="Preferred Session Length">
               <div className="flex gap-2 flex-wrap">
                 {["30 min", "45 min", "60 min"].map((opt) => (
@@ -254,7 +254,6 @@ export default function NutritionalCounselingForm({ open, setOpen }) {
               </div>
             </FieldWrapper>
 
-            {/* Preferred Consultation Type (radio Field 51) */}
             <div>
               <h3 className="text-sm font-semibold text-[#0C3C3E] mb-2">
                 Preferred Consultation Type
@@ -279,25 +278,6 @@ export default function NutritionalCounselingForm({ open, setOpen }) {
               )}
             </div>
 
-            {/* Payment (Field 52) */}
-            <FieldWrapper error={errors.paymentCard}>
-              <FloatingInput
-                label="Payment — Credit Card Number"
-                value={formData.paymentCard}
-                onChange={(v) => handleChange("paymentCard", v)}
-              />
-            </FieldWrapper>
-
-            {/* Captcha (Field 53) */}
-            <FieldWrapper error={errors.captcha}>
-              <FloatingInput
-                label="Captcha"
-                value={formData.captcha}
-                onChange={(v) => handleChange("captcha", v)}
-              />
-            </FieldWrapper>
-
-            {/* Agreement (Field 54) */}
             <div>
               <label className="flex items-start gap-3 text-sm text-gray-700">
                 <input

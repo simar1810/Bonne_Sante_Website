@@ -2,6 +2,8 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import Image from "next/image";
+import { MoveRight } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 function FadeSlide({ children, from }) {
   const ref = useRef(null);
@@ -20,6 +22,7 @@ function FadeSlide({ children, from }) {
 }
 
 export default function WhyChooseUs() {
+  const router = useRouter();
   return (
     <section id="blogs" className="w-full flex justify-center py-18 px-4">
       <div
@@ -43,25 +46,27 @@ export default function WhyChooseUs() {
               />
             </div>
 
-            <div className="bg-linear-to-r from-[#558D94] to-[#07363C] rounded-2xl px-5 py-3 backdrop-blur border-2 border-[#999999] w-full md:w-auto">
+            <div className="bg-linear-to-r from-[#558D94] to-[#07363C] rounded-2xl px-5 py-3 backdrop-blur border-2 border-[#999999] w-full md:w-auto relative">
               <h3 className="text-xl font-kaushan mb-2 text-center md:text-left">
                 Expert Team
               </h3>
               <p className="text-lg leading-5 text-gray-200 text-center md:text-left">
-                Certified dietitians and health coaches dedicated to your success.
+                Cure PCOS Naturally with Nutrition and Fitness Strategies That Work.
               </p>
+              <MoveRight onClick={()=>router.push('/blogs/blog1')} size={20} className="text-white absolute top-2 right-4 animate-pulse"/> 
             </div>
             </div>
           </FadeSlide>
           <FadeSlide from="up">
           <div className="col-span-1 flex flex-col gap-3 items-center md:items-start">
-            <div className="bg-linear-to-r from-[#558D94] to-[#07363C] rounded-2xl px-5 py-3 backdrop-blur border-2 border-[#999999] w-full md:w-auto">
+            <div className="bg-linear-to-r from-[#558D94] to-[#07363C] rounded-2xl px-5 py-3 backdrop-blur border-2 border-[#999999] w-full md:w-auto relative">
               <h3 className="text-xl font-kaushan mb-2 text-center md:text-left">
                 Personalized Care
               </h3>
               <p className="text-lg leading-5 text-gray-200 text-center md:text-left">
-                Every service is tailored to your unique needs.
-              </p>
+                Nutritional Interventions to Boost Energy and Strength During Cancer Treatment.
+                </p>
+              <MoveRight onClick={()=>router.push("/blogs/blog2")} size={20} className="text-white absolute top-2 right-4 animate-pulse"/>
             </div>
 
             <div className="overflow-hidden rounded-2xl w-full md:w-[28vw] h-52 sm:h-64 md:h-68">
@@ -87,13 +92,106 @@ export default function WhyChooseUs() {
               />
             </div>
 
-            <div className="bg-linear-to-r from-[#558D94] to-[#07363C] rounded-2xl px-5 py-3 backdrop-blur border-2 border-[#999999] w-full md:w-auto">
+            <div className="bg-linear-to-r from-[#558D94] to-[#07363C] rounded-2xl px-5 py-3 backdrop-blur border-2 border-[#999999] w-full md:w-auto relative">
               <h3 className="text-xl font-kaushan mb-2 text-center md:text-left">
                 Holistic Approach
               </h3>
               <p className="text-lg leading-5 text-gray-200 text-center md:text-left">
-                Addressing diet, behavior, and lifestyle for lasting results.
-              </p>
+                Debunking Myths About Metabolism and Weight Loss Fact vs. Fiction
+                </p>
+              <MoveRight onClick={()=>router.push("/blogs/blog3")} size={20} className="text-white absolute top-2 right-4 animate-pulse"/>
+            </div>
+          </div>
+          </FadeSlide>
+          <FadeSlide from="down">
+          <div className="col-span-1 flex flex-col items-center md:items-start">
+            <div className="overflow-hidden rounded-2xl w-full md:w-[28vw] h-52 sm:h-64 md:h-68">
+              <Image
+                src="/choose1.png"
+                alt="Expert Team"
+                width={1000}
+                height={1000}
+                className="h-full w-full object-cover md:w-[28vw]"
+              />
+            </div>
+
+            <div className="bg-linear-to-r from-[#558D94] to-[#07363C] rounded-2xl px-5 py-3 backdrop-blur border-2 border-[#999999] w-full md:w-auto relative">
+              <h3 className="text-xl font-kaushan mb-2 text-center md:text-left">
+                Expert Team
+              </h3>
+              <p className="text-lg leading-5 text-gray-200 text-center md:text-left">
+                What is a Metabolic Reset? Clinical Insights You Need to Know
+                </p>
+              <MoveRight onClick={()=>router.push("/blogs/blog4")} size={20} className="text-white absolute top-2 right-4 animate-pulse"/>
+            </div>
+            </div>
+          </FadeSlide>
+          <FadeSlide from="up">
+          <div className="col-span-1 flex flex-col gap-3 items-center md:items-start">
+            <div className="bg-linear-to-r from-[#558D94] to-[#07363C] rounded-2xl px-5 py-3 backdrop-blur border-2 border-[#999999] w-full md:w-auto relative">
+              <h3 className="text-xl font-kaushan mb-2 text-center md:text-left">
+                Personalized Care
+              </h3>
+              <p className="text-lg leading-5 text-gray-200 text-center md:text-left">
+                The Role of Adaptogens in Modern Nutrition: Transforming Wellness Routines
+                </p>
+              <MoveRight onClick={()=>router.push("/blogs/blog5")} size={20} className="text-white absolute top-2 right-4 animate-pulse"/>
+            </div>
+
+            <div className="overflow-hidden rounded-2xl w-full md:w-[28vw] h-52 sm:h-64 md:h-68">
+              <Image
+                src="/choose2.png"
+                alt="Personalized Care"
+                width={500}
+                height={400}
+                className="h-full w-full object-cover md:w-[28vw]"
+              />
+            </div>
+            </div>
+          </FadeSlide>
+          <FadeSlide from="down">
+          <div className="col-span-1 flex flex-col items-center md:items-start">
+            <div className="overflow-hidden rounded-2xl w-full md:w-[28vw] h-52 sm:h-64 md:h-68">
+              <Image
+                src="/choose3.png"
+                alt="Holistic Approach"
+                width={500}
+                height={400}
+                className="h-full w-full object-cover md:w-[28vw]"
+              />
+            </div>
+
+            <div className="bg-linear-to-r from-[#558D94] to-[#07363C] rounded-2xl px-5 py-3 backdrop-blur border-2 border-[#999999] w-full md:w-auto relative">
+              <h3 className="text-xl font-kaushan mb-2 text-center md:text-left">
+                Holistic Approach
+              </h3>
+              <p className="text-lg leading-5 text-gray-200 text-center md:text-left">
+                Gut Health and Its Connection to Overall Wellness
+                </p>
+                <MoveRight onClick={()=>router.push("/blogs/blog6")} size={20} className="text-white absolute top-2 right-4 animate-pulse"/>
+            </div>
+          </div>
+          </FadeSlide>
+          <FadeSlide from="down">
+          <div className="col-span-1 flex flex-col items-center md:items-start">
+            <div className="overflow-hidden rounded-2xl w-full md:w-[28vw] h-52 sm:h-64 md:h-68">
+              <Image
+                src="/choose3.png"
+                alt="Holistic Approach"
+                width={500}
+                height={400}
+                className="h-full w-full object-cover md:w-[28vw]"
+              />
+            </div>
+
+            <div className="bg-linear-to-r from-[#558D94] to-[#07363C] rounded-2xl px-5 py-3 backdrop-blur border-2 border-[#999999] w-full md:w-auto relative">
+              <h3 className="text-xl font-kaushan mb-2 text-center md:text-left">
+                Holistic Approach
+              </h3>
+              <p className="text-lg leading-5 text-gray-200 text-center md:text-left">
+                The Power of Personalized Nutrition: Is One Size Fit All?
+                </p>
+                <MoveRight onClick={()=>router.push("/blogs/blog7")} size={20} className="text-white absolute top-2 right-4 animate-pulse"/>
             </div>
           </div>
           </FadeSlide>

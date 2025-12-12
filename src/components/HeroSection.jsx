@@ -1,9 +1,17 @@
+"use client"
 import React from "react";
 import Navbar from "./Navbar";
 import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
+import ContactUsForm from "@/forms/ContactUs";
 
 const HeroSection = () => {
+    const scrollToSection = (id) => {
+    const section = document.getElementById(id);
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
+  };
   return (
     <section id="home" className="relative h-[92vh] overflow-hidden mt-4 md:mt-6 mb-4 md:mb-10 mx-4 md:mx-8 rounded-4xl md:rounded-none">
 
@@ -55,19 +63,19 @@ const HeroSection = () => {
         </p>
 
         <div className="flex sm:flex-row flex-col items-start sm:items-center gap-4 mb-8 sm:mb-10">
-          <button className="bg-[#07363C] border-2 border-white text-white px-4 py-2 sm:px-3 sm:py-3 rounded-full font-semibold transition w-full sm:w-auto">
+          <button onClick={() => scrollToSection("about")} className="bg-[#07363C] border-2 border-white text-white px-4 py-2 sm:px-3 sm:py-3 rounded-full font-semibold transition w-full sm:w-auto">
             Learn more about us
           </button>
 
-          <button className="flex items-center gap-2 text-white font-medium w-full sm:w-auto justify-center sm:justify-start">
-            Contact Us
+          <div className="flex items-center gap-2 text-white font-medium w-full sm:w-auto justify-center sm:justify-start">
+            <ContactUsForm bgColor={"bg-transparent"}/>
             <span className="flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-[#07363C] backdrop-blur-md">
               <ArrowUpRight size={18} className="text-white" />
             </span>
-          </button>
+          </div>
         </div>
 
-        <div className="flex items-center gap-3 sm:gap-4">
+        <div className="hidden items-center gap-3 sm:gap-4">
           <div className="flex -space-x-2 sm:-space-x-3">
             <Image src="/Ellipse2.png" alt="user" width={32} height={32} className="rounded-full border-2 border-white" />
             <Image src="/Ellipse3.png" alt="user" width={32} height={32} className="rounded-full border-2 border-white" />

@@ -1,8 +1,9 @@
+"use client"
 import React, { useState } from "react";
 import { X } from "lucide-react";
 import toast from "react-hot-toast";
 
-const ContactUsForm = () => {
+const ContactUsForm = ({bgColor}) => {
   const [open, setOpen] = useState(false);
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -41,6 +42,7 @@ const ContactUsForm = () => {
       toast.error("Please fix the highlighted errors");
       return;
     }
+    
     toast.success("Message sent successfully!");
     setErrors({});
   };
@@ -57,12 +59,12 @@ const ContactUsForm = () => {
 
   const errorStyle =
     "border-red-400 focus:border-red-500 focus:ring-red-200 error-input";
-
+  // 
   return (
     <>
       <button
         onClick={() => setOpen(true)}
-        className="bg-[#07363C] rounded-full px-6 py-3 text-white font-semibold transition-all duration-300 hover:scale-105 hover:shadow-xl"
+        className={`${bgColor} rounded-full px-6 py-3 text-white font-semibold transition-all duration-300 hover:scale-105 hover:shadow-xl`}
       >
         Contact Us
       </button>
@@ -93,7 +95,7 @@ const ContactUsForm = () => {
                     onChange={(e) => handleChange("firstName", e.target.value, setFirstName)}
                     className={`w-full px-4 py-3 rounded-xl border ${
                       errors.firstName ? errorStyle : "border-gray-200"
-                    } focus:ring-2 outline-none`}
+                    } focus:ring-2 outline-none text-black`}
                   />
                   {errors.firstName && (
                     <p className="text-red-500 text-xs mt-1">
@@ -112,7 +114,7 @@ const ContactUsForm = () => {
                     }
                     className={`w-full px-4 py-3 rounded-xl border ${
                       errors.lastName ? errorStyle : "border-gray-200"
-                    } focus:ring-2 outline-none`}
+                    } focus:ring-2 outline-none text-black`}
                   />
                   {errors.lastName && (
                     <p className="text-red-500 text-xs mt-1">
@@ -133,7 +135,7 @@ const ContactUsForm = () => {
                   }
                   className={`w-full px-4 py-3 rounded-xl border ${
                     errors.email ? errorStyle : "border-gray-200"
-                  } focus:ring-2 outline-none`}
+                  } focus:ring-2 outline-none text-black`}
                 />
                 {errors.email && (
                   <p className="text-red-500 text-xs mt-1">{errors.email}</p>
@@ -151,7 +153,7 @@ const ContactUsForm = () => {
                   }
                   className={`w-full px-4 py-3 rounded-xl border ${
                     errors.subject ? errorStyle : "border-gray-200"
-                  } focus:ring-2 outline-none`}
+                  } focus:ring-2 outline-none text-black`}
                 />
                 {errors.subject && (
                   <p className="text-red-500 text-xs mt-1">{errors.subject}</p>
@@ -169,7 +171,7 @@ const ContactUsForm = () => {
                   rows={4}
                   className={`w-full px-4 py-3 rounded-xl border ${
                     errors.message ? errorStyle : "border-gray-200"
-                  } focus:ring-2 outline-none`}
+                  } focus:ring-2 outline-none text-black`}
                 />
                 {errors.message && (
                   <p className="text-red-500 text-xs mt-1">{errors.message}</p>

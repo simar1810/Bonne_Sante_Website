@@ -1,6 +1,7 @@
 "use client";
 import { X, CheckCircle } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { createOrder, openRazorpay, registerUser } from "@/utils/payment";
 import toast from "react-hot-toast";
 
 export default function MealPlanForm({ open, setOpen }) {
@@ -23,14 +24,12 @@ export default function MealPlanForm({ open, setOpen }) {
     fitnessGoals: [],
     additionalInfo: "",
     serviceSelection: "",
-    paymentCard: "",
     agreeMedicalDisclaimer: false,
-    captcha: "",
   });
 
   const [loading, setLoading] = useState(false);
   const [successOpen, setSuccessOpen] = useState(false);
-
+  const [scriptLoaded, setScriptLoaded] = useState(false);
   const handleChange = (key, value) => {
     setFormData((prev) => ({ ...prev, [key]: value }));
   };
@@ -62,22 +61,21 @@ export default function MealPlanForm({ open, setOpen }) {
     if (!formData.serviceSelection)
       return "Select a service plan duration";
 
-    if (!formData.paymentCard.trim())
-      return "Credit card number is required";
-
-    if (!/^\d{12,16}$/.test(formData.paymentCard))
-      return "Invalid credit card number";
-
     if (!formData.agreeMedicalDisclaimer)
       return "You must agree to the disclaimer";
 
-    if (!formData.captcha.trim()) return "Captcha is required";
-
     return null;
   };
-
-  const handleSubmit = (e) => {
+ useEffect(() => {
+    const script = document.createElement("script");
+    script.src = "https://checkout.razorpay.com/v1/checkout.js";
+    script.async = true;
+    script.onload = () => setScriptLoaded(true);
+    document.body.appendChild(script);
+  }, []);
+  const handleSubmit = async(e) => {
     e.preventDefault();
+    if (!scriptLoaded) return toast.error("Payment gateway still loading, please wait a second");
     const error = validateForm();
 
     if (error) {
@@ -87,13 +85,20 @@ export default function MealPlanForm({ open, setOpen }) {
 
     setLoading(true);
 
-    setTimeout(() => {
+    try {
+      let amount = 499;
+      await registerUser({ name: formData.name, email:formData.email, phoneNumber:formData.phone, reason:"Meal Plan" });
+      const order = await createOrder({amount});
+      await openRazorpay({ order, name: formData.name, email:formData.email, phoneNumber:formData.phone, amount });
+    } catch (err) {
+      console.error(err);
+      toast.error("Error initiating payment. Please try again.");
       setLoading(false);
-      setSuccessOpen(true);
-      console.log("FORM SUBMITTED →", formData);
-      toast.success("Form submitted!");
-      setTimeout(() => setSuccessOpen(false), 2000);
-    }, 1500);
+      return;
+    } finally {
+      setLoading(false);
+    }
+    setOpen(false);
   };
 
   if (!open) return null;
@@ -273,12 +278,6 @@ export default function MealPlanForm({ open, setOpen }) {
               </div>
             </div>
 
-            <FloatingInput
-              label="Credit Card Number"
-              value={formData.paymentCard}
-              onChange={(v) => handleChange("paymentCard", v)}
-            />
-
             <label className="flex items-start gap-3 text-sm text-gray-700">
               <input
                 type="checkbox"
@@ -293,12 +292,6 @@ export default function MealPlanForm({ open, setOpen }) {
                 information provided. This is not a substitute for medical advice.
               </span>
             </label>
-
-            <FloatingInput
-              label="Captcha"
-              value={formData.captcha}
-              onChange={(v) => handleChange("captcha", v)}
-            />
 
             <button
               type="submit"

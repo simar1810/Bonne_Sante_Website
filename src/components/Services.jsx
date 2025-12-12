@@ -9,6 +9,26 @@ import WeightManagementForm from "@/forms/WeightManagementForm";
 import SportsNutritionForm from "@/forms/SportsNutritionForm";
 import MedicalNutritionForm from "@/forms/MedicalNutritionForm";
 import FamilyWellnessForm from "@/forms/FamilyWellnessForm";
+import GeneticNutritionForm from "@/forms/GeneticNutritionForm";
+import HealthyLifestyleForm from "@/forms/HealthyLifestyleForm";
+import SchoolNutritionProgrammeForm from "@/forms/SchoolNutritionProgrammeForm";
+import WeddingBellsNutritionForm from "@/forms/WeddingBellsNutritionForm";
+import FamilyDietPackageForm from "@/forms/FamilyDietPackageForm";
+import HealthyRestaurantKitchenForm from "@/forms/HealthyRestaurantKitchenForm";
+import HealthyLifestyleProgrammeForm from "@/forms/HealthyLifestyleProgrammeForm";
+import CommunityNutritionProgrammeForm from "@/forms/CommunityNutritionProgrammeForm";
+import CorporateNutritionProgrammeForm from "@/forms/CorporateNutritionProgrammeForm";
+import LifestyleCoachingForm from "@/forms/LifestyleCoachingForm";
+import CustomizedDietPlanForm from "@/forms/CustomizedDietPlanForm";
+import PersonalizedDietChartForm from "@/forms/PersonalizedDietChartForm";
+import SportsNutritionProgrammeForm from "@/forms/SportsNutritionProgrammeForm";
+import WeightManagementProgrammeForm from "@/forms/WeightManagementProgrammeForm";
+import DiabetesManagementProgrammeForm from "@/forms/DiabetesManagementProgrammeForm";
+import HeartDiseaseSupportProgrammeForm from "@/forms/HeartDiseaseSupportProgrammeForm";
+import GINutritionProgrammeForm from "@/forms/GINutritionProgrammeForm";
+import LiverHealthProgrammeForm from "@/forms/LiverHealthProgrammeForm";
+import KidneyHealthProgrammeForm from "@/forms/KidneyHealthProgrammeForm";
+
 
 const services = [
   {
@@ -60,6 +80,97 @@ const services = [
     tag: "Get Support",
     img: "/services9.png",
   },
+
+  {
+    title: "School Nutrition Programme",
+    tag: "Healthy Futures",
+    img: "/services9.png",
+  },
+  {
+    title: "Wedding Bells Nutrition Programme",
+    tag: "Begin Glow-Up",
+    img: "/services9.png",
+  },
+  {
+    title: "Family Diet Package",
+    tag: "Get Started",
+    img: "/services9.png",
+  },
+  {
+    title: "Healthy Restaurant Kitchen Setup Programme",
+    tag: "Set up Kitchen",
+    img: "/services9.png",
+  },
+  {
+    title: "Healthy Lifestyle Programme",
+    tag: "Get in",
+    img: "/services9.png",
+  },
+  {
+    title: "Community Nutrition Programme",
+    tag: "Learn More",
+    img: "/services9.png",
+  },
+  {
+    title: "Corporate Nutrition Programme",
+    tag: "Work Health",
+    img: "/services9.png",
+  },
+  {
+    title: "Lifestyle Coaching",
+    tag: "Start Coaching",
+    img: "/services9.png",
+  },
+  {
+    title: "Customized Diet Plan",
+    tag: "Get Your Plan",
+    img: "/services9.png",
+  },
+  {
+    title: "Personalized Diet Chart",
+    tag: "Submit",
+    img: "/services9.png",
+  },
+  {
+    title: "Sports Nutrition Programme",
+    tag: "Boost yourself",
+    img: "/services9.png",
+  },
+  {
+    title: "Weight Management Programme",
+    tag: "Get Fit",
+    img: "/services9.png",
+  },
+  {
+    title: "Diabetes Management Programme",
+    tag: "Check Diabetes",
+    img: "/services9.png",
+  },
+  {
+    title: "Heart Disease Support Programme",
+    tag: "Aid My Heart",
+    img: "/services9.png",
+  },
+  {
+    title: "Cancer Nutrition Support Programme",
+    tag: "Submit",
+    img: "/services9.png",
+  },
+  {
+    title: "Kidney Health Nutrition Programme",
+    tag: "Kidney Health",
+    img: "/services9.png",
+  },
+  {
+    title: "Liver Health Nutrition Programme",
+    tag: "Liver Health",
+    img: "/services9.png",
+  },
+  {
+    title: "Gastrointestinal (GI) Nutrition Programme",
+    tag: "Gut Health",
+    img: "/services9.png",
+  },
 ];
 
 function ServiceCard({ item, i }) {
@@ -72,6 +183,25 @@ function ServiceCard({ item, i }) {
   const [openSports, setOpenSports] = useState(false);
   const [openMedical, setOpenMedical] = useState(false);
   const [openFamily, setOpenFamily] = useState(false);
+  const [openGenetics, setOpenGenetics] = useState(false);
+  const [openhealthy, setOpenhealthy] = useState(false);
+  const [openSchool, setOpenSchool] = useState(false);
+  const [openWedding, setOpenWedding] = useState(false);
+  const [openFamilyPackage, setOpenFamilyPackage] = useState(false);
+  const [openhealthyRest, setOpenhealthyRest] = useState(false);
+  const [openhealthylifestyle, setOpenhealthylifestyle] = useState(false);
+  const [openCommunityNutri, setOpenCommunityNutri] = useState(false);
+  const [openCorporateNutri, setOpenCorporateNutri] = useState(false);
+  const [openlifestyle, setOpenlifestyle] = useState(false);
+  const [openCustomiseddiet, setOpenCustomiseddiet] = useState(false);
+  const [openPersonalised, setOpenPersonalised] = useState(false);
+  const [openSportsNutri, setOpenSportsNutri] = useState(false);
+  const [openWeightMan, setOpenWeightMan] = useState(false);
+  const [openDiabetes, setOpenDiabetes] = useState(false);
+  const [openHeartDisease, setOpenHeartDisease] = useState(false);
+  const [openGI, setOpenGI] = useState(false);
+  const [openKidney, setOpenKidney] = useState(false);
+  const [openLiver, setOpenLiver] = useState(false);
 
 
   const onTagClick = () => {
@@ -82,6 +212,25 @@ function ServiceCard({ item, i }) {
     if (item.title === "Sports Nutrition Programs") setOpenSports(true);
     if (item.title === "Medical Nutrition Programs") setOpenMedical(true);
     if (item.title === "Family Wellness") setOpenFamily(true);
+    if (item.title === "Genetic Nutrition Program") setOpenGenetics(true);
+    if (item.title === "Healthy Lifestyle Program") setOpenhealthy(true);
+    if (item.title === "School Nutrition Programme") setOpenSchool(true);
+    if (item.title === "Wedding Bells Nutrition Programme") setOpenWedding(true);
+    if (item.title === "Family Diet Package") setOpenFamilyPackage(true);
+    if (item.title === "Healthy Restaurant Kitchen Setup Programme") setOpenhealthyRest(true);
+    if (item.title === "Healthy Lifestyle Programme") setOpenhealthylifestyle(true);
+    if (item.title === "Community Nutrition Programme") setOpenCommunityNutri(true);
+    if (item.title === "Corporate Nutrition Programme") setOpenCorporateNutri(true);
+    if (item.title === "Lifestyle Coaching") setOpenlifestyle(true);
+    if (item.title === "Customized Diet Plan") setOpenCustomiseddiet(true);
+    if (item.title === "Personalized Diet Chart") setOpenPersonalised(true);
+    if (item.title === "Sports Nutrition Programme") setOpenSportsNutri(true);
+    if (item.title === "Weight Management Programme") setOpenWeightMan(true);
+    if (item.title === "Diabetes Management Programme") setOpenDiabetes(true);
+    if (item.title === "Heart Disease Support Programme") setOpenHeartDisease(true);
+    if (item.title === "Gastrointestinal (GI) Nutrition Programme") setOpenGI(true);
+    if (item.title === "Liver Health Nutrition Programme") setOpenLiver(true);
+    if (item.title === "Kidney Health Nutrition Programme") setOpenKidney(true);
   };
 
   return (
@@ -141,6 +290,63 @@ function ServiceCard({ item, i }) {
       )}
       {item.title === "Family Wellness" && (
         <FamilyWellnessForm open={openFamily} setOpen={setOpenFamily} />
+      )}
+      {item.title === "Genetic Nutrition Program" && (
+        <GeneticNutritionForm open={openGenetics} setOpen={setOpenGenetics} />
+      )}
+      {item.title === "Healthy Lifestyle Program" && (
+        <HealthyLifestyleForm open={openhealthy} setOpen={setOpenhealthy} />
+      )}
+      {item.title === "School Nutrition Programme" && (
+        <SchoolNutritionProgrammeForm open={openSchool} setOpen={setOpenSchool} />
+      )}
+      {item.title === "Wedding Bells Nutrition Programme" && (
+        <WeddingBellsNutritionForm open={openWedding} setOpen={setOpenWedding} />
+      )}
+      {item.title === "Family Diet Package" && (
+        <FamilyDietPackageForm open={openFamilyPackage} setOpen={setOpenFamilyPackage} />
+      )}
+      {item.title === "Healthy Restaurant Kitchen Setup Programme" && (
+        <HealthyRestaurantKitchenForm open={openhealthyRest} setOpen={setOpenhealthyRest} />
+      )}
+      {item.title === "Healthy Lifestyle Programme" && (
+        <HealthyLifestyleProgrammeForm open={openhealthylifestyle} setOpen={setOpenhealthylifestyle} />
+      )}
+      {item.title === "Community Nutrition Programme" && (
+        <CommunityNutritionProgrammeForm open={openCommunityNutri} setOpen={setOpenCommunityNutri} />
+      )}
+      {item.title === "Corporate Nutrition Programme" && (
+        <CorporateNutritionProgrammeForm open={openCorporateNutri} setOpen={setOpenCorporateNutri} />
+      )}
+      {item.title === "Lifestyle Coaching" && (
+        <LifestyleCoachingForm open={openlifestyle} setOpen={setOpenlifestyle} />
+      )}
+      {item.title === "Customized Diet Plan" && (
+        <CustomizedDietPlanForm open={openCustomiseddiet} setOpen={setOpenCustomiseddiet} />
+      )}
+      {item.title === "Personalized Diet Chart" && (
+        <PersonalizedDietChartForm open={openPersonalised} setOpen={setOpenPersonalised} />
+      )}
+      {item.title === "Sports Nutrition Programme" && (
+        <SportsNutritionProgrammeForm open={openSportsNutri} setOpen={setOpenSportsNutri} />
+      )}
+      {item.title === "Weight Management Programme" && (
+        <WeightManagementProgrammeForm open={openWeightMan} setOpen={setOpenWeightMan} />
+      )}
+      {item.title === "Diabetes Management Programme" && (
+        <DiabetesManagementProgrammeForm open={openDiabetes} setOpen={setOpenDiabetes} />
+      )}
+      {item.title === "Heart Disease Support Programme" && (
+        <HeartDiseaseSupportProgrammeForm open={openHeartDisease} setOpen={setOpenHeartDisease} />
+      )}
+      {item.title === "Gastrointestinal (GI) Nutrition Programme" && (
+        <GINutritionProgrammeForm open={openGI} setOpen={setOpenGI} />
+      )}
+      {item.title === "Liver Health Nutrition Programme" && (
+        <LiverHealthProgrammeForm open={openLiver} setOpen={setOpenLiver} />
+      )}
+      {item.title === "Kidney Health Nutrition Programme" && (
+        <KidneyHealthProgrammeForm open={openKidney} setOpen={setOpenKidney} />
       )}
 
       <div className="absolute bottom-14 left-8 w-[80%] md:max-w-[87%] 2xl:w-[90%] text-white">
