@@ -1,12 +1,23 @@
 "use client";
 import React from "react";
-import {Instagram} from "lucide-react"
+import {Instagram, MoveLeft} from "lucide-react"
 import Image from "next/image";
+import NavbarBlogs from "@/components/NavbarBlogs";
+import Link from "next/link";
 const page = () => {
   return (
-    <div className="min-h-screen bg-[#F6F9F9] flex flex-col items-center pt-16">
-      <article className="max-w-4xl text-[#07363C] leading-relaxed space-y-6 pb-14 px-4">
-
+    <>
+      <div className="min-h-screen bg-[#F6F9F9] flex flex-col items-center pt-5">
+        <div className="mb-4">
+          <NavbarBlogs/>
+        </div>
+        
+      <article className="max-w-4xl text-[#07363C] leading-relaxed space-y-6 pb-14 px-4 pt-10">
+          <Link href="/" className="flex items-center justify-start gap-3 mb-5">
+            <MoveLeft size={30} className="text-[#07363C]" /> 
+            <p>Back</p>
+          </Link> 
+        
         <h1 className="text-4xl font-bold">
           Cure PCOS Naturally with Nutrition and Fitness Strategies That Work
         </h1>
@@ -137,7 +148,8 @@ const page = () => {
                   <p>Copyright © 2025 Bonne Sante. All Rights Reserved.</p>
             </div>
         </div> 
-    </div>
+      </div>
+    </>
   );
 };
 
