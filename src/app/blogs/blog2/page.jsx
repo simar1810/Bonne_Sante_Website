@@ -1,11 +1,19 @@
 "use client";
 import React from "react";
-
+import NavbarBlogs from "@/components/NavbarBlogs";
+import Link from "next/link";
+import { MoveLeft } from "lucide-react";
 const page = () => {
   return (
-    <div className="min-h-screen bg-[#F6F9F9] flex flex-col items-center pt-16">
-      <article className="max-w-4xl text-[#07363C] leading-relaxed space-y-6 pb-14 px-4">
-
+    <div className="min-h-screen bg-[#F6F9F9] flex flex-col items-center pt-5">
+        <div className="mb-4">
+          <NavbarBlogs/>
+        </div>
+      <article className="max-w-4xl text-[#07363C] leading-relaxed space-y-6 pb-14 px-4 pt-10">
+          <Link href="/" className="flex items-center justify-start gap-3 mb-5">
+            <MoveLeft size={30} className="text-[#07363C]" /> 
+            <p>Back</p>
+          </Link> 
         <h1 className="text-4xl font-bold">
           Nutritional Interventions to Boost Energy and Strength During Cancer Treatment
         </h1>

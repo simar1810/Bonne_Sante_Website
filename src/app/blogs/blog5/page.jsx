@@ -1,11 +1,21 @@
 "use client";
 import React from "react";
 import Image from "next/image";
+import NavbarBlogs from "@/components/NavbarBlogs";
+import Link from "next/link";
+import { MoveLeft } from "lucide-react";
 export default function Page() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white pt-5">
+        <div className="mb-4 max-w-6xl mx-auto">
+          <NavbarBlogs/>
+        </div>
       <div className="bg-[#07363C] text-white py-16 px-6">
         <div className="max-w-4xl mx-auto">
+         <Link href="/" className="flex text-white items-center justify-start gap-3 mb-5">
+            <MoveLeft size={30} className="" /> 
+            <p>Back</p>
+          </Link> 
           <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
             The Role of Adaptogens in Modern Nutrition: Transforming Wellness Routines
           </h1>
