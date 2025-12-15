@@ -28,7 +28,7 @@ import HeartDiseaseSupportProgrammeForm from "@/forms/HeartDiseaseSupportProgram
 import GINutritionProgrammeForm from "@/forms/GINutritionProgrammeForm";
 import LiverHealthProgrammeForm from "@/forms/LiverHealthProgrammeForm";
 import KidneyHealthProgrammeForm from "@/forms/KidneyHealthProgrammeForm";
-
+import { ChevronDown } from "lucide-react";
 
 const services = [
   {
@@ -367,6 +367,19 @@ function ServiceCard({ item, i }) {
 
 
 export default function Services() {
+  const ITEMS_PER_ROW = 3;
+  const ROWS_AT_A_TIME = 3;
+  const ITEMS_PER_PAGE = ITEMS_PER_ROW * ROWS_AT_A_TIME;
+
+  const [visibleCount, setVisibleCount] = useState(ITEMS_PER_PAGE);
+
+  const handleLoadMore = () => {
+    setVisibleCount((prev) =>
+      Math.min(prev + ITEMS_PER_PAGE, services.length)
+    );
+  };
+
+  const hasMore = visibleCount < services.length;
   return (
     <section id="services" className="w-full pb-10 flex flex-col items-center px-4">
       <div className="bg-[#0C3C3E] text-white px-8 py-2 rounded-full font-kaushan text-xl mb-12 shadow-sm">
@@ -374,10 +387,22 @@ export default function Services() {
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 w-full max-w-7xl">
-        {services.map((item, i) => (
+        {services.slice(0, visibleCount).map((item, i) => (
           <ServiceCard key={i} item={item} i={i} />
         ))}
       </div>
+      {hasMore && (
+        <>
+        <p className="text-[#0C3C3E] text-sm font-bold">Load More</p>
+        <button
+          onClick={handleLoadMore}
+          className="mt-6 flex items-center justify-center w-12 h-12 rounded-full bg-[#327476] text-white hover:scale-110 transition animate-bounce"
+          aria-label="Load more services"
+        >
+          <ChevronDown size={28} />
+          </button>
+        </>
+      )}
     </section>
   );
 }
