@@ -84,22 +84,22 @@ const services = [
   {
     title: "School Nutrition Programme",
     tag: "Healthy Futures",
-    img: "/services9.png",
+    img: "/services15.png",
   },
   {
     title: "Wedding Bells Nutrition Programme",
     tag: "Begin Glow-Up",
-    img: "/services9.png",
+    img: "/services16.png",
   },
   {
     title: "Family Diet Package",
     tag: "Get Started",
-    img: "/services9.png",
+    img: "/services17.png",
   },
   {
     title: "Healthy Restaurant Kitchen Setup Programme",
-    tag: "Set up Kitchen",
-    img: "/services9.png",
+    tag: "Get fit",
+    img: "/services18.png",
   },
   {
     title: "Healthy Lifestyle Programme",
@@ -108,38 +108,40 @@ const services = [
   },
   {
     title: "Community Nutrition Programme",
-    tag: "Learn More",
-    img: "/services9.png",
+    tag: "Boost my performance",
+    fit:1,
+    img: "/services19.png",
   },
   {
     title: "Corporate Nutrition Programme",
-    tag: "Work Health",
-    img: "/services9.png",
+    tag: "Get support",
+    img: "/services20.png",
   },
   {
     title: "Lifestyle Coaching",
-    tag: "Start Coaching",
-    img: "/services9.png",
+    tag: "Support family",
+    img: "/services21.png",
   },
   {
     title: "Customized Diet Plan",
-    tag: "Get Your Plan",
-    img: "/services9.png",
+    tag: "Discover my Plan",
+    fit:1,
+    img: "/services22.png",
   },
   {
     title: "Personalized Diet Chart",
-    tag: "Submit",
-    img: "/services9.png",
+    tag: "Get support",
+    img: "/services23.png",
   },
   {
     title: "Sports Nutrition Programme",
     tag: "Boost yourself",
-    img: "/services9.png",
+    img: "/services24.png",
   },
   {
     title: "Weight Management Programme",
     tag: "Get Fit",
-    img: "/services9.png",
+    img: "/services25.png",
   },
   {
     title: "Diabetes Management Programme",
@@ -149,27 +151,28 @@ const services = [
   {
     title: "Heart Disease Support Programme",
     tag: "Aid My Heart",
-    img: "/services9.png",
+    img: "/services26.png",
   },
   {
     title: "Cancer Nutrition Support Programme",
-    tag: "Submit",
-    img: "/services9.png",
+    tag: "Support family",
+    img: "/services27.png",
   },
   {
     title: "Kidney Health Nutrition Programme",
-    tag: "Kidney Health",
-    img: "/services9.png",
+    tag: "Discover My Plan",
+    fit:1,
+    img: "/services28.png",
   },
   {
     title: "Liver Health Nutrition Programme",
     tag: "Liver Health",
-    img: "/services9.png",
+    img: "/services29.png",
   },
   {
     title: "Gastrointestinal (GI) Nutrition Programme",
     tag: "Gut Health",
-    img: "/services9.png",
+    img: "/services30.png",
   },
 ];
 

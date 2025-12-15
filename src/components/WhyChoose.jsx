@@ -48,10 +48,10 @@ export default function WhyChooseUs() {
 
             <div className="bg-linear-to-r from-[#558D94] to-[#07363C] rounded-2xl px-5 py-3 backdrop-blur border-2 border-[#999999] w-full md:w-auto relative">
               <h3 className="text-xl font-kaushan mb-2 text-center md:text-left">
-                Expert Team
+                PCOS Care with Nutrition & Fitness
               </h3>
               <p className="text-lg leading-5 text-gray-200 text-center md:text-left">
-                Cure PCOS Naturally with Nutrition and Fitness Strategies That Work.
+                Support your PCOS journey with easy nutrition tips and smart fitness habits that help restore balance.
               </p>
               <MoveRight onClick={()=>router.push('/blogs/blog1')} size={20} className="text-white absolute top-2 right-4 animate-pulse"/> 
             </div>
@@ -61,10 +61,10 @@ export default function WhyChooseUs() {
           <div className="col-span-1 flex flex-col gap-3 items-center md:items-start">
             <div className="bg-linear-to-r from-[#558D94] to-[#07363C] rounded-2xl px-5 py-3 backdrop-blur border-2 border-[#999999] w-full md:w-auto relative">
               <h3 className="text-xl font-kaushan mb-2 text-center md:text-left">
-                Personalized Care
+                Nutrition for Energy During Cancer Care
               </h3>
               <p className="text-lg leading-5 text-gray-200 text-center md:text-left">
-                Nutritional Interventions to Boost Energy and Strength During Cancer Treatment.
+                Learn how the right foods can support your energy levels and keep your body strong throughout cancer care.
                 </p>
               <MoveRight onClick={()=>router.push("/blogs/blog2")} size={20} className="text-white absolute top-2 right-4 animate-pulse"/>
             </div>
@@ -94,10 +94,10 @@ export default function WhyChooseUs() {
 
             <div className="bg-linear-to-r from-[#558D94] to-[#07363C] rounded-2xl px-5 py-3 backdrop-blur border-2 border-[#999999] w-full md:w-auto relative">
               <h3 className="text-xl font-kaushan mb-2 text-center md:text-left">
-                Holistic Approach
+                Metabolism & Weight Loss: Myths vs. Facts
               </h3>
               <p className="text-lg leading-5 text-gray-200 text-center md:text-left">
-                Debunking Myths About Metabolism and Weight Loss Fact vs. Fiction
+                Clear the confusion with simple, science-backed facts about metabolism and weight loss.
                 </p>
               <MoveRight onClick={()=>router.push("/blogs/blog3")} size={20} className="text-white absolute top-2 right-4 animate-pulse"/>
             </div>
@@ -117,10 +117,10 @@ export default function WhyChooseUs() {
 
             <div className="bg-linear-to-r from-[#558D94] to-[#07363C] rounded-2xl px-5 py-3 backdrop-blur border-2 border-[#999999] w-full md:w-auto relative">
               <h3 className="text-xl font-kaushan mb-2 text-center md:text-left">
-                Expert Team
+                Metabolic Reset: What You Really Need to Know
               </h3>
               <p className="text-lg leading-5 text-gray-200 text-center md:text-left">
-                What is a Metabolic Reset? Clinical Insights You Need to Know
+                A metabolic reset helps restore your body’s energy balance through simple nutrition and lifestyle shifts.
                 </p>
               <MoveRight onClick={()=>router.push("/blogs/blog4")} size={20} className="text-white absolute top-2 right-4 animate-pulse"/>
             </div>
@@ -130,10 +130,10 @@ export default function WhyChooseUs() {
           <div className="col-span-1 flex flex-col gap-3 items-center md:items-start">
             <div className="bg-linear-to-r from-[#558D94] to-[#07363C] rounded-2xl px-5 py-3 backdrop-blur border-2 border-[#999999] w-full md:w-auto relative">
               <h3 className="text-xl font-kaushan mb-2 text-center md:text-left">
-                Personalized Care
+                Adaptogens in Modern Nutrition
               </h3>
               <p className="text-lg leading-5 text-gray-200 text-center md:text-left">
-                The Role of Adaptogens in Modern Nutrition: Transforming Wellness Routines
+                Learn how adaptogens help reduce stress, boost energy, and support everyday wellness.
                 </p>
               <MoveRight onClick={()=>router.push("/blogs/blog5")} size={20} className="text-white absolute top-2 right-4 animate-pulse"/>
             </div>
@@ -163,17 +163,17 @@ export default function WhyChooseUs() {
 
             <div className="bg-linear-to-r from-[#558D94] to-[#07363C] rounded-2xl px-5 py-3 backdrop-blur border-2 border-[#999999] w-full md:w-auto relative">
               <h3 className="text-xl font-kaushan mb-2 text-center md:text-left">
-                Holistic Approach
+                Gut Health & Total Wellness
               </h3>
               <p className="text-lg leading-5 text-gray-200 text-center md:text-left">
-                Gut Health and Its Connection to Overall Wellness
+                Discover how a healthy gut influences overall wellness, from digestion to immunity and mental well-being.
                 </p>
                 <MoveRight onClick={()=>router.push("/blogs/blog6")} size={20} className="text-white absolute top-2 right-4 animate-pulse"/>
             </div>
           </div>
           </FadeSlide>
           <FadeSlide from="down">
-          <div className="col-span-1 flex flex-col items-center md:items-start">
+          <div className="hidden col-span-1  flex-col items-center md:items-start">
             <div className="overflow-hidden rounded-2xl w-full md:w-[28vw] h-52 sm:h-64 md:h-68">
               <Image
                 src="/choose3.png"

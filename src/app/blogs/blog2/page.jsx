@@ -273,7 +273,64 @@ const page = () => {
         <p className="text-center font-semibold">
           Let us help you achieve your goals—one step at a time. Start your nutritional journey today with Bonne Sante and take control of your cancer care with confidence.
         </p>
+        <hr className="border-[#07363C]/20 my-8" />
 
+        <h2 className="text-3xl font-semibold">References</h2>
+
+        <div className="space-y-4 text-sm">
+
+          <p>
+            de van der Schueren, M. A. E., Laviano, A., Blanchard, H., Jourdan, M., Arends, J., & Baracos, V. E. (2018). Systematic review and meta-analysis of the evidence for oral nutritional intervention on nutritional and clinical outcomes during chemo(radio)therapy: current evidence and guidance for design of future trials. <em>Annals of Oncology, 29</em>(5), 1141–1153. https://www.annalsofoncology.org/article/S0923-7534(19)34566-1/fulltext
+          </p>
+
+          <p>
+            Guest, D. D., Evans, E. M., & Rogers, L. Q. (2012). Diet components associated with perceived fatigue in breast cancer survivors. <em>European Journal of Cancer Care, 21</em>(3), 313–323. https://doi.org/10.1111/j.1365-2354.2012.01368.x
+          </p>
+
+          <p>
+            Haß, U., Kochlik, B., Herpich, C., Rudloff, S., & Norman, K. (2022). Effects of an omega-3 supplemented, high-protein diet in combination with vibration and resistance exercise on muscle power and inflammation in old adults: A pilot randomized controlled trial. <em>Nutrients, 14</em>(20), 4274. https://doi.org/10.3390/nu14204274
+          </p>
+
+          <p>
+            Karakus, Z. N., Altinkaynak, M., Akpinar, T. S., Erten, S. N., Vatansever, S., & Saka, B. (2023). Comparison of per kilogram and nitrogen balance calculations for the prediction of daily protein requirement in cancer patients: A prospective randomized controlled study. <em>Research Square</em>. https://doi.org/10.21203/rs.3.rs-3629139/v1
+          </p>
+
+          <p>
+            Kenny, E., Touger-Decker, R., & August, D. A. (2020). Structured review of the value added by the registered dietitian to the care of gastrointestinal cancer patients. <em>Nutrition in Clinical Practice, 35</em>(5), 776–785. https://doi.org/10.1002/ncp.10568
+          </p>
+
+          <p>
+            Liao, C.-D., Tsauo, J.-Y., Wu, Y.-T., Cheng, C.-P., Chen, H.-C., Huang, Y.-C., … & Liou, T.-H. (2017). Effects of protein supplementation combined with resistance exercise on body composition and physical function in older adults: A systematic review and meta-analysis. <em>The American Journal of Clinical Nutrition, 106</em>(4), 1078–1091. https://doi.org/10.1093/ajcn/nqx094
+          </p>
+
+          <p>
+            Moulton, C. J., Valentine, R. J., Layman, D. K., Devkota, S., Singletary, K. W., Wallig, M. A., & Donovan, S. M. (2010). A high protein moderate carbohydrate diet fed at discrete meals reduces early progression of N-methyl-N-nitrosourea-induced breast tumorigenesis in rats. <em>Nutrition & Metabolism, 7</em>(1), 1. https://doi.org/10.1186/1743-7075-7-1
+          </p>
+
+          <p>
+            Muscaritoli, M., Lucia, S., Farcomeni, A., Lorusso, V., Saracino, V., Barone, C., … & Marchetti, P. (2017). Prevalence of malnutrition in patients at first medical oncology visit: the PreMiO study. <em>Oncotarget, 8</em>, 79884–79896. https://doi.org/10.18632/oncotarget.20168
+          </p>
+
+          <p>
+            Repka, C. P., & Hayward, R. (2018). Effects of an exercise intervention on cancer-related fatigue and its relationship to markers of oxidative stress. <em>Integrative Cancer Therapies, 18</em>(3), 1534735418766402. https://doi.org/10.1177/1534735418766402
+          </p>
+
+          <p>
+            Sajjapong, W., Leelahagul, P., Pongphibool, S., & Thongsuk, N. (2021). Effect of resistance training exercise combined with high protein diet on body weight and muscle mass in underweight adolescent males. <em>Malaysian Journal of Nutrition, 27</em>(1), 41–52. https://doi.org/10.31246/mjn-2020-0039
+          </p>
+
+          <p>
+            Stene, G. B., Helbostad, J. L., Balstad, T. R., Riphagen, I. I., Kaasa, S., & Oldervoll, L. M. (2013). Effect of physical exercise on muscle mass and strength in cancer patients during treatment—A systematic review. <em>Critical Reviews in Oncology/Hematology, 88</em>(3), 573–593. https://doi.org/10.1016/j.critrevonc.2013.07.001
+          </p>
+
+          <p>
+            Zick, S. M., Colacino, J., Cornellier, M., Khabir, T., Surnow, K., & Djuric, Z. (2017). Fatigue reduction diet in breast cancer survivors: A pilot randomized clinical trial. <em>Breast Cancer Research and Treatment, 161</em>(2), 299–310. https://doi.org/10.1007/s10549-016-4070-y
+          </p>
+
+          <p>
+            Zick, S. M., Sen, A., Han-Markey, T. L., & Harris, R. E. (2013). Examination of the association of diet and persistent cancer-related fatigue: A pilot study. <em>Oncology Nursing Forum, 40</em>(1), E41–E49. https://doi.org/10.1188/13.ONF.E41-E49
+          </p>
+        </div>
       </article>
         <div className="bg-[rgb(7,54,60)] py-4 text-center px-4 flex justify-around w-full">
             <div className="max-w-4xl flex items-center justify-start text-white">

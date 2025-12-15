@@ -141,7 +141,47 @@ const page = () => {
         <p className="text-center font-semibold">
           Take control of your PCOS management—one step at a time. Start your nutritional journey today with Bonne Sante and achieve the best possible outcomes for your health.
         </p>
+        <hr className="border-[#07363C]/20 my-8" />
 
+        <h2 className="text-3xl font-semibold">References</h2>
+
+        <div className="space-y-4 text-sm">
+          <p>
+            Arentz, S., Smith, C. A., Abbott, J., & Bensoussan, A. (2021). Perceptions and experiences of lifestyle interventions in women with polycystic ovary syndrome (PCOS), as a management strategy for symptoms of PCOS. <em>BMC Women&apos;s Health, 21</em>(1), 107. https://doi.org/10.1186/s12905-021-01123-9
+          </p>
+
+          <p>
+            George, S., & Alex, A. (2021). Assessment of symptoms and diet intake in young adult with polycystic ovary syndrome (PCOS). <em>Journal of Scientific Research, 65</em>(4), 504-520. https://doi.org/10.37398/JSR.2021.650415
+          </p>
+
+          <p>
+            Kite, C., Lahart, I. M., Afzal, I., Broom, D. R., Randeva, H., Kyrou, I., & Brown, J. E. (2019). Exercise, or exercise and diet for the management of polycystic ovary syndrome: A systematic review and meta-analysis. <em>Systematic Reviews, 8</em>, 51. https://doi.org/10.1186/s13643-019-1005-x
+          </p>
+
+          <p>
+            Li, L., Kang, Z., Chen, P., Niu, B., & Wang, Y. (2024). Association between mild depressive states in polycystic ovary syndrome and an unhealthy lifestyle. <em>Frontiers in Public Health, 12</em>, 1361962. https://doi.org/10.3389/fpubh.2024.1361962
+          </p>
+
+          <p>
+            Patten, R. K., Boyle, R. A., Moholdt, T., Kiel, I., Hopkins, W. G., Harrison, C. L., & Stepto, N. K. (2020). Exercise interventions in polycystic ovary syndrome: A systematic review and meta-analysis. <em>Frontiers in Physiology, 11</em>, 606. https://doi.org/10.3389/fphys.2020.00606
+          </p>
+
+          <p>
+            PradhapSankar, V., Abraham, M. M., & Sneha, S. (2024). Effect of aerobic exercise training on body mass index and quality of life in adult obese women with polycystic ovary syndrome. <em>International Journal of Health Sciences and Research, 14</em>(4), 49-54. https://doi.org/10.52403/ijhsr.20240408
+          </p>
+
+          <p>
+            Scannell, N., Moran, L., Mantzioris, E., Cowan, S., & Villani, A. (2022). Efficacy, feasibility and acceptability of a Mediterranean diet intervention on hormonal, metabolic and anthropometric measures in overweight and obese women with polycystic ovary syndrome: Study protocol. <em>Metabolites, 12</em>(4), 311. https://doi.org/10.3390/metabo12040311
+          </p>
+
+          <p>
+            Tefagh, G., Payab, M., Qorbani, M., Sharifi, F., Sharifi, Y., Ebrahimpur, M., & Aghili, R. (2022). Effect of vitamin E supplementation on cardiometabolic risk factors, inflammatory and oxidative markers and hormonal functions in PCOS (polycystic ovary syndrome): A systematic review and meta-analysis. <em>Scientific Reports, 12</em>(1), 5770. https://doi.org/10.1038/s41598-022-09082-3
+          </p>
+
+          <p>
+            Wang, T., Sha, L., Li, Y., Zhu, L., Wang, Z., Li, K., Lu, H., Bao, T., Guo, L., Zhang, X., & Wang, H. (2020). Dietary α-Linolenic Acid-Rich Flaxseed Oil Exerts Beneficial Effects on Polycystic Ovary Syndrome Through Sex Steroid Hormones—Microbiota—Inflammation Axis in Rats. <em>Frontiers in Endocrinology, 11</em>, 284. https://doi.org/10.3389/fendo.2020.00284
+          </p>
+        </div>     
       </article>
         <div className="bg-[rgb(7,54,60)] py-4 text-center px-4 flex justify-around w-full">
             <div className="max-w-4xl flex items-center justify-start text-white">

@@ -134,6 +134,47 @@ const page = () => {
           impact is limited and varies from person to person. McCarthy et al. (2011) found that not all supplements are 
           effective, and their effectiveness depends on individual metabolic responses.
         </p>
+        <hr className="my-8 border-[#07363C]/30" />
+
+        <h2 className="text-3xl font-semibold">References</h2>
+
+        <div className="space-y-4 text-sm">
+          <p>
+            Byrne, N. M., Wood, R. E., Schutz, Y., & Hills, A. P. (2012). Does metabolic compensation explain the majority of less-than-expected weight loss in obese adults during a short-term severe diet and exercise intervention? <em>International Journal of Obesity, 36</em>(11), 1472–1478. https://doi.org/10.1038/ijo.2012.109
+          </p>
+
+          <p>
+            Martins, C., Gower, B. A., Hill, J. O., & Hunter, G. R. (2020). Metabolic adaptation is not a major barrier to weight-loss maintenance. <em>The American Journal of Clinical Nutrition, 112</em>(4), 791–796. https://doi.org/10.1093/ajcn/nqaa086
+          </p>
+
+          <p>
+            Fothergill, E., Guo, J., Howard, L., Kerns, J. C., Knuth, N. D., Brychta, R., Chen, K. Y., Skarulis, M. C., Walter, M., Walter, P. J., & Hall, K. D. (2016). Persistent metabolic adaptation 6 years after &quot;The Biggest Loser&quot; competition. <em>Obesity, 24</em>(10), 2039–2049. https://doi.org/10.1002/oby.21538
+          </p>
+
+          <p>
+            Murgia, M., Toniolo, L., Nagaraj, N., Schiaffino, S., Reggiani, C., & Ma, M. (2017). Single muscle fiber proteomics reveals fiber-type-specific features of human muscle aging. <em>Cell Reports, 19</em>(11), 2396–2409. https://doi.org/10.1016/j.celrep.2017.05.035
+          </p>
+
+          <p>
+            Gueugneau, M., Coudy-Gandilhon, C., Chambon, C., Verney, J., Taillandier, D., Combaret, L., Polge, C., Walrand, S., Roche, F., Barthélémy, J.-C., Féasson, L., & Béchet, D. (2021). Muscle proteomic and transcriptomic profiling of healthy aging and metabolic syndrome in men. <em>International Journal of Molecular Sciences, 22</em>(8), 4205. https://doi.org/10.3390/ijms22084205
+          </p>
+
+          <p>
+            Jafari-Vayghan, H., Varshosaz, P., Hajizadeh-Sharafabad, F., Razmi, H. R., Amirpour, M., Mohammad Tavakoli-Rouzbehani, O., Alizadeh, M., & Maleki, V. (2020). A comprehensive insight into the effect of glutamine supplementation on metabolic variables in diabetes mellitus: a systematic review. <em>Nutrition & Metabolism, 17</em>(1), 80. https://doi.org/10.1186/s12986-020-00503-6
+          </p>
+
+          <p>
+            Ferraz-Bannitz, R., Beraldo, R. A., Peluso, A. A., Dall, M., Babaei, P., Foglietti, R. C., Martins, L. M., Gomes, P. M., Marchini, J. S., Suen, V. M. M., Freitas, L. C. C., Navegantes, L. C., Pretti, M. A. M., Boroni, M., Treebak, J. T., Mori, M. A., Foss, M. C., & Foss-Freitas, M. C. (2022). Dietary protein restriction improves metabolic dysfunction in patients with metabolic syndrome in a randomized, controlled trial. <em>Nutrients, 14</em>(13), 2670. https://doi.org/10.3390/nu14132670
+          </p>
+
+          <p>
+            McCarthy, C. G., Farney, T. M., …, & Bloomer, R. J. (2011). A finished dietary supplement stimulates lipolysis and metabolic rate in young men and women. <em>Nutrients & Metabolic Insights, 4</em>, 37–45. https://doi.org/10.4137/NMI.S8567
+          </p>
+
+          <p>
+            Vaughan, R. A., Garcia-Smith, R., Barberena, M. A., Bisoffi, M., Trujillo, K., & Conn, C. A. (2012). Treatment of human muscle cells with popular dietary supplements increases mitochondrial function and metabolic rate. <em>Nutrition & Metabolism, 9</em>(1), 101. https://doi.org/10.1186/1743-7075-9-101
+          </p>
+        </div>
           </article>
         <div className="bg-[rgb(7,54,60)] py-4 text-center px-4 flex justify-around w-full">
             <div className="max-w-4xl flex items-center justify-start text-white">
