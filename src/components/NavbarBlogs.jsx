@@ -32,18 +32,17 @@ const NavbarBlogs = () => {
 
         <li 
           className='text-lg text-[#07363C] hover:text-[#0f6b78] cursor-pointer font-semibold'
-          onClick={() => goToSection("blogs")}
-        >
-          Blogs
-        </li>
-
-        <li 
-          className='text-lg text-[#07363C] hover:text-[#0f6b78] cursor-pointer font-semibold'
           onClick={() => goToSection("services")}
         >
           Services
         </li>
 
+        <li 
+          className='text-lg text-[#07363C] hover:text-[#0f6b78] cursor-pointer font-semibold'
+          onClick={() => goToSection("blogs")}
+        >
+          Blogs
+        </li>
         <li 
           className='text-lg text-[#07363C] hover:text-[#0f6b78] cursor-pointer font-semibold'
           onClick={() => setPeopleDropdown(!peopleDropdown)}
@@ -97,17 +96,14 @@ const NavbarBlogs = () => {
             </div>
             <ul className="flex flex-col gap-6 text-center">
               <li className="text-lg text-white font-semibold cursor-pointer"
-                  onClick={() => scrollToSection("home")}>Home</li>
+                  onClick={() => goToSection("home")}>Home</li>
 
               <li className="text-lg text-white font-semibold cursor-pointer"
-                  onClick={() => scrollToSection("about")}>About Us</li>
-
+                  onClick={() => goToSection("about")}>About Us</li>
               <li className="text-lg text-white font-semibold cursor-pointer"
-                  onClick={() => scrollToSection("blogs")}>Blogs</li>
-
+                  onClick={() => goToSection("services")}>Services</li>
               <li className="text-lg text-white font-semibold cursor-pointer"
-                  onClick={() => scrollToSection("services")}>Services</li>
-
+                  onClick={() => goToSection("blogs")}>Blogs</li>
               <li className="text-lg text-white font-semibold cursor-pointer"
                 onClick={() => setPeopleDropdown(!peopleDropdown)}>People</li>
               {peopleDropdown && (
@@ -127,7 +123,7 @@ const NavbarBlogs = () => {
                 </div>
               )}              
               <li className="text-lg text-white font-semibold cursor-pointer"
-                  onClick={() => scrollToSection("contact")}>Contact Us</li>
+                  onClick={() => goToSection("contact")}>Contact Us</li>
             </ul>
           </div>
         </div>

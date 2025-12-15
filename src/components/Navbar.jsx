@@ -30,19 +30,17 @@ const Navbar = () => {
         >
           About Us
         </li>
-
-        <li 
-          className='text-lg text-[#07363C] hover:text-white cursor-pointer font-semibold'
-          onClick={() => scrollToSection("blogs")}
-        >
-          Blogs
-        </li>
-
         <li 
           className='text-lg text-[#07363C] hover:text-white cursor-pointer font-semibold'
           onClick={() => scrollToSection("services")}
         >
           Services
+        </li>
+        <li 
+          className='text-lg text-[#07363C] hover:text-white cursor-pointer font-semibold'
+          onClick={() => scrollToSection("blogs")}
+        >
+          Blogs
         </li>
 
         <li 
@@ -102,13 +100,10 @@ const Navbar = () => {
 
               <li className="text-lg text-white font-semibold cursor-pointer"
                   onClick={() => scrollToSection("about")}>About Us</li>
-
-              <li className="text-lg text-white font-semibold cursor-pointer"
-                  onClick={() => scrollToSection("blogs")}>Blogs</li>
-
               <li className="text-lg text-white font-semibold cursor-pointer"
                   onClick={() => scrollToSection("services")}>Services</li>
-
+              <li className="text-lg text-white font-semibold cursor-pointer"
+                  onClick={() => scrollToSection("blogs")}>Blogs</li>
               <li className="text-lg text-white font-semibold cursor-pointer"
                 onClick={() => setPeopleDropdown(!peopleDropdown)}>People</li>
               {peopleDropdown && (

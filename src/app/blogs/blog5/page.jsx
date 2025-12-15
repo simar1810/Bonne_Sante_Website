@@ -366,6 +366,47 @@ export default function Page() {
             At Bonne Sante our personalized wellness solutions provide adaptogens in your health journey. Together, let&apos;s harness the power of nature to achieve holistic well-being.
           </p>
         </section>
+
+       <section className="mt-16">
+          <h2 className="text-3xl font-bold text-[#07363C] mb-6">References</h2>
+          <div className="space-y-4 text-sm text-gray-700">
+            <p>
+              Al Shamli, A., Mourgan, F. H. A., Al-Yaaribi, A., & Hefny, N. E. D. A. (2024). Adaptogenic herbs as natural sources of sports performance enhancers. <em>The Open Medicinal Chemistry Journal, 21</em>, 1–18. https://doi.org/10.2174/0118741045309981240611110433
+            </p>
+
+            <p>
+              Gerontakos, S., Casteleijn, D., & Wardle, J. (2020). Clinician perspectives and understanding of the adaptogenic concept: A focus group study with naturopaths and Western herbalists. <em>Integrative Medicine Research, 9</em>(2), 100433. https://doi.org/10.1016/j.imr.2020.100433
+            </p>
+
+            <p>
+              Lee, H. W., Choi, J., Lee, Y. J., Kil, K. J., & Lee, M. S. (2016). Ginseng for managing menopausal women&apos;s health: A systematic review of double-blind, randomized, placebo-controlled trials. <em>Medicine, 95</em>(38), e4914. https://doi.org/10.1097/MD.0000000000004914
+            </p>
+
+            <p>
+              Liang, J., Chen, L., Guo, Y.-H., Zhang, M., & Gao, Y. (2019). Simultaneous determination and analysis of major ginsenosides in wild American ginseng grown in Tennessee. <em>Chemistry & Biodiversity, 16</em>(7), e201900203. https://doi.org/10.1002/cbdv.201900203
+            </p>
+
+            <p>
+              Machín, R. P., Florido, M., Chirino-Godoy, R., & López-Rios, L. (2023). Adaptogenic botanicals with emphasis on Rhodiola rosea and Withania somnifera. <em>European Journal of Medicinal Plants, 34</em>(11), 20–39. https://doi.org/10.9734/ejmp/2023/v34i111168
+            </p>
+
+            <p>
+              Oliynyk, S., & Oh, S. (2013). Actoprotective effect of ginseng: Improving mental and physical performance. <em>Journal of Ginseng Research, 37</em>(2), 144–166. https://doi.org/10.1016/j.jgr.2013.04.002
+            </p>
+
+            <p>
+              Uluısık, D., & Keskin, E. (2016). Hepatoprotective effects of ginseng in rats fed cholesterol-rich diet. <em>Brazilian Journal of Pharmaceutical Sciences, 44</em>, e80887. https://doi.org/10.22456/1679-9216.80887
+            </p>
+
+            <p>
+              Wang, D., Shao, S., Zhang, Y., Zhao, D., & Wang, M. (2021). Insight into polysaccharides from Panax ginseng C. A. Meyer in improving intestinal inflammation: Modulating intestinal microbiota and autophagy. <em>Frontiers in Immunology, 12</em>, 683911. https://doi.org/10.3389/fimmu.2021.683911
+            </p>
+
+            <p>
+              You, M., & Xu, M. (2024). Ginseng oligopeptides improve the intestinal physiology and promote the antioxidant capacity of the gut-on-a-chip model. <em>Nutrients, 16</em>(6), 845. https://doi.org/10.3390/nu16060845
+            </p>
+          </div>
+        </section>
       </div>
         <div className="bg-[rgb(7,54,60)] py-4 text-center px-4 flex justify-around w-full">
             <div className="max-w-4xl flex items-center justify-start text-white">

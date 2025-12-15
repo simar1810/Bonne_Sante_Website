@@ -476,6 +476,51 @@ const page = () => {
           Supplements like omega-3s, magnesium, or adaptogens may complement a
           reset but should be used under professional guidance.
         </p>
+        <hr className="my-8 border-[#07363C]/30" />
+
+        <h2 className="text-3xl font-semibold">References</h2>
+
+        <div className="space-y-4 text-sm">
+          <p>
+            Butte, N. F., Brandt, M. L., Wong, W. W., Liu, Y., Mehta, N. R., Wilson, T. A., Adolph, A. L., Puyau, M. R., Vohra, F. A., Shypailo, R. J., & Zakeri, I. F. (2015). Energetic adaptations persist after bariatric surgery in severely obese adolescents. <em>Obesity, 23</em>(2), 426–435. https://doi.org/10.1002/oby.20994
+          </p>
+
+          <p>
+            Martins, C., Roekenes, J., Salamati, S., Gower, B. A., & Hunter, G. R. (2020). Metabolic adaptation is an illusion, only present when participants are in negative energy balance. <em>The American Journal of Clinical Nutrition, 112</em>(5), 1212–1218. https://doi.org/10.1093/ajcn/nqaa220
+          </p>
+
+          <p>
+            Fothergill, E., Guo, J., Howard, L., Kerns, J. C., Knuth, N. D., Brychta, R., Chen, K. Y., Skarulis, M. C., Walter, M., Walter, P. J., & Hall, K. D. (2016). Persistent metabolic adaptation 6 years after &quot;The Biggest Loser&quot; competition. <em>Obesity, 24</em>(10), 2039–2049. https://doi.org/10.1002/oby.21538
+          </p>
+
+          <p>
+            Rabinovitz, H. R., Boaz, M., Ganz, T., Jakubowicz, D., Matas, Z., Madar, Z., & Wainstein, J. (2013). Big breakfast rich in protein and fat improves glycemic control in type 2 diabetics. <em>Obesity, 21</em>(10), 1889–1898. https://doi.org/10.1002/oby.20654
+          </p>
+
+          <p>
+            Jakubowicz, D., Barnea, M., Wainstein, J., & Froy, O. (2013). High caloric intake at breakfast vs. dinner differentially influences weight loss of overweight and obese women. <em>Obesity, 21</em>(3), 450–459. https://doi.org/10.1002/oby.20460
+          </p>
+
+          <p>
+            Grant, L. K., St. Hilaire, M. A., Brainard, G. C., Czeisler, C. A., Lockley, S. W., & Rahman, S. A. (2021). Endogenous circadian regulation and phase resetting of clinical metabolic biomarkers. <em>Journal of Pineal Research, 71</em>(4), e12752. https://doi.org/10.1111/jpi.12752
+          </p>
+
+          <p>
+            Kolbe, I., Leinweber, B., Brandenburger, M., & Oster, H. (2019). Circadian clock network desynchrony promotes weight gain and alters glucose homeostasis in mice. <em>Molecular Metabolism, 30</em>, 140–151. https://doi.org/10.1016/j.molmet.2019.09.012
+          </p>
+
+          <p>
+            Smith, K. R., Aghababian, A., Papantoni, A., Veldhuizen, M. G., Kamath, V., Harris, C., Moran, T. H., Carnell, S., & Steele, K. E. (2021). One-year follow-up of taste-related reward associations with weight loss suggests a critical time to mitigate weight regain following bariatric surgery. <em>Nutrients, 13</em>(11), 3943. https://doi.org/10.3390/nu13113943
+          </p>
+
+          <p>
+            Kyung, D. S., Sung, H. R., Kim, Y. J., Kim, K. D., Cho, S. Y., Choi, J. H., Lee, Y. H., Kim, I. Y., & Seong, J. K. (2018). Global transcriptome analysis identifies weight regain-induced activation of adaptive immune responses in white adipose tissue of mice. <em>International Journal of Obesity, 42</em>(5), 755–764. https://doi.org/10.1038/ijo.2017.220
+          </p>
+
+          <p>
+            Rahman, S. A., St. Hilaire, M. A., Grant, L. K., Barger, L. K., Brainard, G. C., Czeisler, C. A., Klerman, E. B., & Lockley, S. W. (2022). Dynamic lighting schedules to facilitate circadian adaptation to shifted timing of sleep and wake. <em>Journal of Pineal Research, 72</em>(4), e12805. https://doi.org/10.1111/jpi.12805
+          </p>
+        </div>
           </article>
         <div className="bg-[rgb(7,54,60)] py-4 text-center px-4 flex justify-around w-full">
             <div className="max-w-4xl flex items-center justify-start text-white">
