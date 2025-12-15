@@ -121,7 +121,7 @@ const TermsAndConditionsPage = () => {
           </p>
 
           <p>
-            Nutri Health reserves the right to monitor all Comments and to remove
+            Bonne Sante reserves the right to monitor all Comments and to remove
             any Comments that can be considered inappropriate, offensive, or that
             cause a breach of these Terms and Conditions.
           </p>
@@ -149,7 +149,7 @@ const TermsAndConditionsPage = () => {
           </ul>
 
           <p>
-            You hereby grant Nutri Health a non-exclusive license to use, reproduce,
+            You hereby grant Bonne Sante a non-exclusive license to use, reproduce,
             edit, and authorize others to use, reproduce, and edit any of your
             Comments in any and all forms, formats, or media.
           </p>
