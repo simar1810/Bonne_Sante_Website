@@ -4,6 +4,8 @@ import Navbar from "./Navbar";
 import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 import ContactUsForm from "@/forms/ContactUs";
+import { useRouter } from "next/navigation";
+import FloatingChatbot from "./FloatingChatbot";
 
 const HeroSection = () => {
     const scrollToSection = (id) => {
@@ -12,6 +14,7 @@ const HeroSection = () => {
       section.scrollIntoView({ behavior: "smooth" });
     }
   };
+  const router = useRouter();
   return (
     <section id="home" className="relative h-[92vh] overflow-hidden mt-4 md:mt-6 mb-4 md:mb-10 mx-4 md:mx-8 rounded-4xl md:rounded-none">
 
@@ -31,7 +34,7 @@ const HeroSection = () => {
       />
 
       <div className="absolute top-0 left-0 sm:block hidden">
-        <Image src="/logo.png" alt="logo" width={500} height={500} className="w-38" />
+        <Image onClick={()=>scrollToSection("home")} src="/logo.png" alt="logo" width={500} height={500} className="w-38 cursor-pointer" />
       </div>
 
       <div className="absolute bottom-0 right-0 rounded-4xl xl:rounded-5xl 2xl:rounded-4xl sm:block hidden">
@@ -99,6 +102,7 @@ const HeroSection = () => {
         </div>
 
       </div>
+      <FloatingChatbot/>
     </section>
   );
 };
