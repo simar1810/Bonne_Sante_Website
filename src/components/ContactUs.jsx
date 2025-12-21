@@ -5,7 +5,8 @@ import React, { useEffect, useState, useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import ContactUsForm from "@/forms/ContactUs";
 import { useRouter } from "next/navigation";
-import Script from "next/script";
+// import Script from "next/script";
+import { getCalApi } from "@calcom/embed-react";
 
 const ContactUs = () => {
   const text = "Take the First Step Today!";
@@ -34,22 +35,29 @@ const ContactUs = () => {
 
     return () => clearInterval(interval);
   }, [isInView]);
+  useEffect(() => {
+    (async function () {
+      const cal = await getCalApi({"namespace":"30min"});
+      cal("ui", {"theme":"light","cssVarsPerTheme":{"light":{"cal-brand":"#07363C"}},"hideEventTypeDetails":true,"layout":"month_view"});
+    })();
+  }, [])
 
   return (
     <>
-      <Script
-        src="https://assets.calendly.com/assets/external/widget.js"
+      {/* <Script
+        // src="https://assets.calendly.com/assets/external/widget.js"
+        src="https://app.cal.com/embed/embed.js"
         strategy="afterInteractive"
-      />
+      /> */}
 
-      <Script id="calendly-style">
+      {/* <Script id="calendly-style">
         {`
           var l = document.createElement("link");
           l.rel = "stylesheet";
           l.href = "https://assets.calendly.com/assets/external/widget.css";
           document.head.appendChild(l);
         `}
-      </Script>
+      </Script> */}
 
       <div
         ref={sectionRef}
@@ -59,7 +67,7 @@ const ContactUs = () => {
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
-        className="w-full h-auto md:h-[540px] lg:h-[450px] xl:h-[540px]
+        className="w-full h-auto md:h-135 lg:h-112.5 xl:h-135
         flex flex-col md:flex-row items-center justify-between 
         px-6 sm:px-10 md:px-28 py-10 md:py-0"
       >
@@ -76,7 +84,7 @@ const ContactUs = () => {
 
           <div className="flex gap-3 justify-center md:justify-start">
             <ContactUsForm bgColor={"bg-[#07363C]"} />
-            <a
+            {/* <a
               href="#"
               onClick={(e) => {
                 e.preventDefault();
@@ -89,7 +97,15 @@ const ContactUs = () => {
               className="text-[#07363C] rounded-full px-4 py-3 bg-white font-bold transition-all duration-200 hover:scale-105 hover:shadow-lg"
             >
               Book Now
-            </a>
+            </a> */}
+            <button
+              data-cal-namespace="30min"
+              data-cal-link="snehansu-behera-lqcj3y/30min"
+              data-cal-config='{"layout":"month_view","theme":"light"}'
+              className="text-[#07363C] rounded-full px-4 py-3 bg-white font-bold transition-all duration-200 hover:scale-105 hover:shadow-lg"
+            >
+              Book Now
+            </button>
           </div>
         </div>
 
