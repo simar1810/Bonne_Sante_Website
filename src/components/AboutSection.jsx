@@ -37,18 +37,18 @@ export default function AboutSection() {
     <section
       id="about"
       ref={sectionRef}
-      className="w-full flex justify-between py-10 px-4 sm:px-8 md:px-10 bg-white"
+      className="w-full flex justify-between py-20 px-4 sm:px-8 md:px-10 bg-white"
     >
-      <div className="w-full flex flex-col md:flex-row items-center justify-between relative gap-6 md:gap-0">
+      <div className="w-full flex flex-col md:flex-row items-center justify-center relative gap-6 md:gap-20 lg:gap-10 xl:gap-18 2xl:gap-20">
 
         {/* LEFT IMAGE */}
         <motion.div style={{ x: leftX, opacity: leftOpacity }}>
           <Image
-            src="/yoga3.png"
+            src="/about1.jfif"
             alt="Meditation"
             width={500}
             height={400}
-            className="w-64 sm:w-80 md:w-[400px] h-auto object-cover"
+            className="w-64 sm:w-80 md:w-40 -rotate-12 rounded-2xl"
           />
         </motion.div>
 
@@ -65,11 +65,11 @@ export default function AboutSection() {
         {/* RIGHT IMAGE */}
         <motion.div style={{ x: rightX, opacity: rightOpacity }}>
           <Image
-            src="/yoga4.png"
+            src="/about2.jfif"
             alt="Meditation"
             width={500}
             height={400}
-            className="w-64 sm:w-80 md:w-[400px] h-auto object-cover"
+            className="w-64 sm:w-80 md:w-40 rotate-12 rounded-2xl"
           />
         </motion.div>
 

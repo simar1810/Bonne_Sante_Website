@@ -4,6 +4,8 @@ import Navbar from "./Navbar";
 import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 import ContactUsForm from "@/forms/ContactUs";
+import { useRouter } from "next/navigation";
+import FloatingChatbot from "./FloatingChatbot";
 
 const HeroSection = () => {
     const scrollToSection = (id) => {
@@ -12,10 +14,11 @@ const HeroSection = () => {
       section.scrollIntoView({ behavior: "smooth" });
     }
   };
+  const router = useRouter();
   return (
-    <section id="home" className="relative h-[92vh] overflow-hidden mt-4 md:mt-6 mb-4 md:mb-10 mx-4 md:mx-8 rounded-4xl md:rounded-none">
+    <section id="home" className="relative h-[92vh] overflow-hidden min-h-screen">
 
-      <Image
+      {/* <Image
         src="/homebg2.png"
         alt="Hero Background"
         fill
@@ -28,13 +31,24 @@ const HeroSection = () => {
         fill
         className="w-[60vw] md:hidden object-cover"
         priority
-      />
+      /> */}
 
-      <div className="absolute top-0 left-0 sm:block hidden">
-        <Image src="/logo.png" alt="logo" width={500} height={500} className="w-38" />
+     <video
+        className="absolute inset-0 w-full h-full object-cover"
+        autoPlay
+        muted
+        loop
+        preload="auto"
+        playsInline
+      >
+        <source src="/homeVideo.mp4" type="video/mp4" />
+      </video>
+      <div className="absolute inset-0 bg-black/40 backdrop-blur-[1px] z-10" />
+      <div className="absolute top-5 left-30 z-10 sm:block hidden">
+        <Image onClick={()=>scrollToSection("home")} src="/whiteLogo.png" alt="logo" width={500} height={500} className="w-38 cursor-pointer" />
       </div>
 
-      <div className="absolute bottom-0 right-0 rounded-4xl xl:rounded-5xl 2xl:rounded-4xl sm:block hidden">
+      {/* <div className="absolute bottom-0 right-0 rounded-4xl xl:rounded-5xl 2xl:rounded-4xl sm:block hidden">
         <Image
           src="/home-yoga2.png"
           alt="logo"
@@ -42,7 +56,7 @@ const HeroSection = () => {
           height={500}
           className="w-56 h-26 xl:w-48 xl:h-30 2xl:w-56 2xl:h-26 rounded-2xl"
         />
-      </div>
+      </div> */}
 
       <div className="absolute top-5 right-6 z-30">
         <Navbar />
@@ -99,6 +113,7 @@ const HeroSection = () => {
         </div>
 
       </div>
+      <FloatingChatbot/>
     </section>
   );
 };
