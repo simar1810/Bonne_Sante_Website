@@ -125,36 +125,36 @@ const Navbar = () => {
 
   return (
     <div className='flex items-center'>
-      <div className='flex justify-between w-[80vw] md:justify-end items-center md:gap-10 2xl:gap-24'>
-      <ul className='hidden md:flex items-center justify-between gap-4 list-none'>
+      <div className='flex justify-between w-[85vw] md:justify-end items-center md:gap-2 xl:gap-4 2xl:gap-24'>
+      <ul className='hidden md:flex items-center justify-between gap-1 xl:gap-4 list-none'>
         <li 
-          className='text-lg text-[#07363C] hover:bg-[#07363C] px-4 py-2 rounded-full transition-all delay-75 duration-500 hover:text-white cursor-pointer font-semibold'
+          className='text-lg lg:text-sm xl:text-lg text-white hover:bg-[#07363C] px-2 xl:px-4 py-2 rounded-full transition-all delay-75 duration-500 hover:text-white cursor-pointer font-semibold'
           onClick={() => scrollToSection("home")}
         >
           Home
         </li>
 
         <li 
-          className='text-lg text-[#07363C] hover:bg-[#07363C] px-4 py-2 rounded-full transition-all delay-75 duration-500 hover:text-white cursor-pointer font-semibold'
+          className='text-lg lg:text-sm xl:text-lg text-white hover:bg-[#07363C] px-2 xl:px-4 py-2 rounded-full transition-all delay-75 duration-500 hover:text-white cursor-pointer font-semibold'
           onClick={() => scrollToSection("about")}
         >
           About Us
         </li>
         <li 
-          className='text-lg text-[#07363C] hover:bg-[#07363C] px-4 py-2 rounded-full transition-all delay-75 duration-500 hover:text-white cursor-pointer font-semibold'
+          className='text-lg lg:text-sm xl:text-lg text-white hover:bg-[#07363C] px-2 xl:px-4 py-2 rounded-full transition-all delay-75 duration-500 hover:text-white cursor-pointer font-semibold'
           onClick={() => scrollToSection("services")}
         >
           Services
         </li>
         <li 
-          className='text-lg text-[#07363C] hover:bg-[#07363C] px-4 py-2 rounded-full transition-all delay-75 duration-500 hover:text-white cursor-pointer font-semibold'
+          className='text-lg lg:text-sm xl:text-lg text-white hover:bg-[#07363C] px-2 xl:px-4 py-2 rounded-full transition-all delay-75 duration-500 hover:text-white cursor-pointer font-semibold'
           onClick={() => scrollToSection("blogs")}
         >
           Blogs
         </li>
 
         <li 
-          className='text-lg text-[#07363C] hover:bg-[#07363C] px-4 py-2 rounded-full transition-all delay-75 duration-500 hover:text-white cursor-pointer font-semibold relative'
+          className='text-lg lg:text-sm xl:text-lg text-white hover:bg-[#07363C] px-2 xl:px-4 py-2 rounded-full transition-all delay-75 duration-500 hover:text-white cursor-pointer font-semibold relative'
           onClick={() => setPeopleDropdown(!peopleDropdown)}
         >
           People
@@ -186,7 +186,7 @@ const Navbar = () => {
         </li>
         
         <li 
-          className='text-lg text-[#07363C] hover:bg-[#07363C] px-4 py-2 rounded-full transition-all delay-75 duration-500 hover:text-white cursor-pointer font-semibold'
+          className='text-lg lg:text-sm xl:text-lg text-white hover:bg-[#07363C] px-2 xl:px-4 py-2 rounded-full transition-all delay-75 duration-500 hover:text-white cursor-pointer font-semibold'
           onClick={() => scrollToSection("contact")}
         >
           Contact Us
@@ -198,7 +198,7 @@ const Navbar = () => {
       <select 
         value={selectedLanguage}
         onChange={(e) => setSelectedLanguage(e.target.value)}
-        className='bg-[#FFFFFF40] backdrop-blur-md text-black px-4 py-2 text-lg font-semibold rounded-full cursor-pointer max-h-10 overflow-y-auto'
+        className='bg-[#FFFFFF40] backdrop-blur-md text-black px-4 py-2 text-sm xl:text-lg font-semibold rounded-full cursor-pointer max-h-10 overflow-y-auto'
       >
         {languages.map((lang) => (
           <option key={lang.code} value={lang.code.toLowerCase()}>

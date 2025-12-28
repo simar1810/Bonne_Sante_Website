@@ -159,7 +159,7 @@ try {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 100, scale: 0.8 }}
             transition={{ duration: 0.3, ease: "easeOut" }}
-            className="fixed bottom-6 right-6 w-[380px] h-[600px] bg-white rounded-2xl shadow-2xl z-50 flex flex-col overflow-hidden border border-gray-200"
+            className="fixed bottom-6 right-6 w-95 h-150 bg-white rounded-2xl shadow-2xl z-50 flex flex-col overflow-hidden border border-gray-200"
           >
             <div className="bg-linear-to-r from-[#0C3C3E] to-[#558D94] p-4 flex items-center justify-between">
               <div className="flex items-center gap-3">
