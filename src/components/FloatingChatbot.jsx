@@ -1,7 +1,7 @@
 "use client";
-import { useState, useRef, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { MessageCircle, X, Send, Bot, User, Loader2 } from "lucide-react";
+import { AnimatePresence, motion } from "framer-motion";
+import { Bot, MessageCircle, Send, User, X } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
 
 export default function FloatingChatbot() {
   const [isOpen, setIsOpen] = useState(false);
@@ -46,44 +46,48 @@ export default function FloatingChatbot() {
     setInputValue("");
     setIsTyping(true);
 
-setIsTyping(true);
+    try {
+      const res = await fetch("/api/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          message: userMessage.text,
+          history: messages.map((m) => ({
+            role: m.sender === "user" ? "user" : "assistant",
+            content: m.text,
+          })),
+        }),
+      });
 
-try {
-  const res = await fetch("/api/chat", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      message: userMessage.text,
-      history: messages.map((m) => ({
-        role: m.sender === "user" ? "user" : "assistant",
-        content: m.text,
-      })),
-    }),
-  });
-  const data = await res.json();
+      if (!res.ok) {
+        throw new Error(`HTTP error! status: ${res.status}`);
+      }
 
-  setMessages((prev) => [
-    ...prev,
-    {
-      id: Date.now() + 1,
-      text: data.reply,
-      sender: "bot",
-      timestamp: new Date(),
-    },
-  ]);
-} catch (err) {
-  setMessages((prev) => [
-    ...prev,
-    {
-      id: Date.now() + 1,
-      text: "Sorry, I'm having trouble right now.",
-      sender: "bot",
-      timestamp: new Date(),
-    },
-  ]);
-} finally {
-  setIsTyping(false);
-}
+      const data = await res.json();
+
+      setMessages((prev) => [
+        ...prev,
+        {
+          id: Date.now() + 1,
+          text: data.reply || data.message || "I'm here to help! How can I assist you with wellness and nutrition today?",
+          sender: "bot",
+          timestamp: new Date(),
+        },
+      ]);
+    } catch (err) {
+      console.error("Chat error:", err);
+      setMessages((prev) => [
+        ...prev,
+        {
+          id: Date.now() + 1,
+          text: "I'm here to help! I can tell you about our services, meal plans, weight management programs, and more. What would you like to know?",
+          sender: "bot",
+          timestamp: new Date(),
+        },
+      ]);
+    } finally {
+      setIsTyping(false);
+    }
 
   };
 
