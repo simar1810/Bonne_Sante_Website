@@ -1,5 +1,6 @@
 import "./globals.css";
 import { Quicksand, Kaushan_Script } from "next/font/google";
+import FloatingChatbot from "@/components/FloatingChatbot";
 
 const quicksand = Quicksand({
   subsets: ["latin"],
@@ -23,7 +24,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${quicksand.className} ${kaushan.variable}`}>
-      <body>{children}</body>
+      <body>
+        {children}
+        <FloatingChatbot />
+      </body>
     </html>
   );
 }

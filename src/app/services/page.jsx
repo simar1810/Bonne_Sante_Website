@@ -1,6 +1,6 @@
 "use client";
-import { motion, useInView} from "framer-motion";
-import { useRef, useState } from "react";
+import { motion, useInView } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import NavbarBlogs from "@/components/NavbarBlogs";
 import Footer from "@/components/Footer";
@@ -30,7 +30,7 @@ import HeartDiseaseSupportProgrammeForm from "@/forms/HeartDiseaseSupportProgram
 import GINutritionProgrammeForm from "@/forms/GINutritionProgrammeForm";
 import LiverHealthProgrammeForm from "@/forms/LiverHealthProgrammeForm";
 import KidneyHealthProgrammeForm from "@/forms/KidneyHealthProgrammeForm";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, Search } from "lucide-react";
 
 const services = [
   {
@@ -51,13 +51,13 @@ const services = [
   {
     title: "Weight Management",
     tag: "  Get Fit",
-    fit:1,
+    fit: 1,
     img: "/services4.png",
   },
   {
     title: "Sports Nutrition Programs",
     tag: "Boost My Performance",
-    fit:1,
+    fit: 1,
     img: "/services11.png",
   },
   {
@@ -73,7 +73,7 @@ const services = [
   {
     title: "Genetic Nutrition Program",
     tag: "Discover My Plan",
-    fit:1,
+    fit: 1,
     img: "/services14.png",
   },
   {
@@ -110,7 +110,7 @@ const services = [
   {
     title: "Community Nutrition Programme",
     tag: "Boost my performance",
-    fit:1,
+    fit: 1,
     img: "/services19.png",
   },
   {
@@ -126,7 +126,7 @@ const services = [
   {
     title: "Customized Diet Plan",
     tag: "Discover my Plan",
-    fit:1,
+    fit: 1,
     img: "/services22.png",
   },
   {
@@ -162,7 +162,7 @@ const services = [
   {
     title: "Kidney Health Nutrition Programme",
     tag: "Discover My Plan",
-    fit:1,
+    fit: 1,
     img: "/services28.png",
   },
   {
@@ -292,8 +292,8 @@ function ServiceCard({ item, i }) {
           {item.tag}
         </div>
       )}
-        {item.title === "Personalized Meal Plans" && (
-          <MealPlanForm open={openMeal} setOpen={setOpenMeal} />
+      {item.title === "Personalized Meal Plans" && (
+        <MealPlanForm open={openMeal} setOpen={setOpenMeal} />
       )}
       {item.title === "Nutritional Counseling" && (
         <NutritionalCounselingForm open={openNutrition} setOpen={setOpenNutrition} />
@@ -389,24 +389,38 @@ export default function ServicesPage() {
   const ITEMS_PER_ROW = 3;
   const ROWS_AT_A_TIME = 3;
   const ITEMS_PER_PAGE = ITEMS_PER_ROW * ROWS_AT_A_TIME;
-    const [visibleCount, setVisibleCount] = useState(ITEMS_PER_PAGE);
-  
-    const handleLoadMore = () => {
-      setVisibleCount((prev) =>
-        Math.min(prev + ITEMS_PER_PAGE, services.length)
-      );
+  const [visibleCount, setVisibleCount] = useState(ITEMS_PER_PAGE);
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const filteredServices = services.filter((service) => {
+    const query = searchQuery.toLowerCase();
+    return (
+      service.title.toLowerCase().includes(query) ||
+      (service.tag && service.tag.toLowerCase().includes(query))
+    );
+  });
+
+  useEffect(() => {
+    setVisibleCount(ITEMS_PER_PAGE);
+  }, [searchQuery, ITEMS_PER_PAGE]);
+
+  const handleLoadMore = () => {
+    setVisibleCount((prev) =>
+      Math.min(prev + ITEMS_PER_PAGE, filteredServices.length)
+    );
   };
-  const hasMore = visibleCount < services.length;
+  const hasMore = visibleCount < filteredServices.length;
+
   return (
     <div className="min-h-screen bg-[#F6F9F9] relative overflow-hidden">
       <FloatingShape delay={0} duration={15} yOffset={-50} />
       <FloatingShape delay={2} duration={18} yOffset={60} />
       <FloatingShape delay={4} duration={20} yOffset={-40} />
-      
+
 
       <div className="relative z-10 pt-20 pb-32">
         <div className="mb-16 flex justify-center">
-          <NavbarBlogs/>
+          <NavbarBlogs />
         </div>
         <div className="max-w-[1400px] mx-auto px-4 mb-20">
           <motion.div
@@ -430,11 +444,11 @@ export default function ServicesPage() {
                 <span className="text-[#0E3D3F] font-medium">Latest Insights</span>
               </div>
             </motion.div>
-            
+
             <h1 className="text-5xl lg:text-6xl font-kaushan text-[#0E3D3F] mb-6">
               Our Services
             </h1>
-            
+
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
               Explore evidence-based insights on nutrition, wellness, and holistic health
             </p>
@@ -445,27 +459,50 @@ export default function ServicesPage() {
               transition={{ duration: 1, delay: 0.5 }}
               className="w-32 h-1 bg-linear-to-r from-transparent via-[#558D94] to-transparent mx-auto mt-8"
             />
+            {/* Search Bar */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="mt-12 max-w-2xl mx-auto px-4 relative"
+            >
+              <div className="relative">
+                <input
+                  type="text"
+                  placeholder="Search services..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="w-full px-6 py-4 pl-14 rounded-full border-2 border-[#558D94]/20 bg-white/80 backdrop-blur-xs text-[#0E3D3F] placeholder-[#0E3D3F]/50 focus:outline-hidden focus:border-[#558D94] focus:ring-4 focus:ring-[#558D94]/10 transition-all text-lg shadow-xs hover:shadow-md"
+                />
+                <Search className="absolute left-5 top-1/2 transform -translate-y-1/2 text-[#558D94] w-6 h-6" />
+              </div>
+            </motion.div>
           </motion.div>
         </div>
 
         <div ref={containerRef} className="max-w-[1400px] mx-auto flex flex-col items-center  space-y-12">
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 w-full max-w-7xl">
-        {services.slice(0, visibleCount).map((item, i) => (
-          <ServiceCard key={i} item={item} i={i} />
-        ))}
-      </div>
-      {hasMore && (
-        <>
-        <p className="text-[#0C3C3E] text-sm font-bold">Load More</p>
-        <button
-          onClick={handleLoadMore}
-          className="mt-6 flex items-center justify-center w-12 h-12 rounded-full bg-[#327476] text-white hover:scale-110 transition animate-bounce"
-          aria-label="Load more services"
-        >
-          <ChevronDown size={28} />
-          </button>
-        </>
-      )}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 w-full max-w-7xl">
+            {filteredServices.slice(0, visibleCount).map((item, i) => (
+              <ServiceCard key={i} item={item} i={i} />
+            ))}
+          </div>
+          {filteredServices.length === 0 && (
+            <div className="text-center text-gray-500 py-10">
+              <p className="text-xl">No services found matching "{searchQuery}"</p>
+            </div>
+          )}
+          {hasMore && (
+            <>
+              <p className="text-[#0C3C3E] text-sm font-bold">Load More</p>
+              <button
+                onClick={handleLoadMore}
+                className="mt-6 flex items-center justify-center w-12 h-12 rounded-full bg-[#327476] text-white hover:scale-110 transition animate-bounce"
+                aria-label="Load more services"
+              >
+                <ChevronDown size={28} />
+              </button>
+            </>
+          )}
         </div>
       </div>
       <div className="bg-[#07363C] w-full mt-20">
