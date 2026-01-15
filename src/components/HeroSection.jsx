@@ -5,7 +5,7 @@ import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 import ContactUsForm from "@/forms/ContactUs";
 import { useRouter } from "next/navigation";
-import FloatingChatbot from "./FloatingChatbot";
+// import FloatingChatbot from "./FloatingChatbot";
 
 const HeroSection = () => {
     const scrollToSection = (id) => {
@@ -113,7 +113,7 @@ const HeroSection = () => {
         </div>
 
       </div>
-      <FloatingChatbot/>
+      {/* <FloatingChatbot/> */}
     </section>
   );
 };
